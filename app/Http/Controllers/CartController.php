@@ -91,7 +91,12 @@ class CartController extends Controller
             $cart_item->so_luong = $request->so_luong;
             $cart_item->save();
 
-            return response()->json(['success' => 'Số lượng đã được cập nhật!']);
+            return response()->json([
+                'success' => true,
+                'message' => '😍 Số lượng đã được cập nhật !',
+            ]);
         }
+
+        return response()->json(['success' => false, 'message' => 'Không tìm thấy sản phẩm trong giỏ hàng']);
     }
 }

@@ -67,7 +67,6 @@
                                         </tr>
                                         <?php $total_cart = 0; ?>
                                         @foreach ($carts as $cart)
-                                            <tr class="cart-items" data-cart-id="{{ $cart->id }}">
                                             <tr>
                                                 <td class="pro_img">
                                                     <img src="{{ asset('storage/' . $cart->anh_mon_an) }}" alt="product"
@@ -88,11 +87,13 @@
 
                                                 <td class="pro_select">
                                                     <div class="quentity_btn btn_cart">
-                                                        <button class="btn decrease-btn btn-danger btn_cart_danger"><i
+                                                        <button class="btn decrease-btn btn-danger btn_cart_danger"
+                                                            data-cart-id="{{ $cart->id }}"><i
                                                                 class="fal fa-minus"></i></button>
                                                         <input type="text" class="quantity-input" placeholder="1"
                                                             value="{{ $cart->so_luong }}">
-                                                        <button class="btn increase-btn btn-success btn_cart_success"><i
+                                                        <button class="btn increase-btn btn-success btn_cart_success"
+                                                            data-cart-id="{{ $cart->id }}"><i
                                                                 class="fal fa-plus"></i></button>
                                                     </div>
                                                 </td>
@@ -127,7 +128,7 @@
                                 </div>
                                 <div class="col-xl-5 col-md-6">
                                     <div class="cart_list_footer_button_text">
-                                        <h6>total cart ({{ $tong_so_luong }})</h6>
+                                        <h6>total cart</h6>
                                         <p class="subtotal">subtotal:
                                             <span>
                                                 {{ number_format($total_cart, 0, ',', '.') }} VND

@@ -21,6 +21,51 @@
 @endsection
 
 @section('content')
+    <!-- CART POPUT START -->
+    <div class="cart_popup">
+        <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+            <p style="display: none" id="dish_id"></p>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                                class="fal fa-times"></i></button>
+                        <div class="cart_popup_img">
+                            <img src="" alt="menu" class="img-fluid w-100">
+                        </div>
+                        <div class="cart_popup_text">
+                            <a href="#" class="title"></a>
+                            <p class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                <span>(201)</span>
+                            </p>
+                            <h4 class="price"> </h4>
+                            <div class="details_quentity">
+                                <h5>select quentity</h5>
+                                <div class="quentity_btn_area d-flex flex-wrapa align-items-center">
+                                    <div class="quentity_btn">
+                                        <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
+                                        <input type="text" placeholder="1" value="1">
+                                        <button class="btn btn-success"><i class="fal fa-plus"></i></button>
+                                    </div>
+                                    <h3 id="sum_cart_popup"></h3>
+                                </div>
+                            </div>
+                            <ul class="details_button_area d-flex flex-wrap">
+                                <li><a class="common_btn" href="#">add to cart</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CART POPUT END -->
+
     <section class="menu_page mt_100 xs_mt_70 mb_100 xs_mb_70">
         <div class="container">
             <form class="menu_search_area" action="{{ route('client.menu') }}" method="GET">
@@ -37,8 +82,8 @@
                                 <select class="select_js" name="sort_by" id="sort_by">
                                     <option value="default"
                                         {{ request()->input('sort_by') == 'default' ? 'selected' : '' }}>mặc định</option>
-                                    <option value="newest"
-                                        {{ request()->input('sort_by') == 'newest' ? 'selected' : '' }}>mới nhất</option>
+                                    <option value="newest" {{ request()->input('sort_by') == 'newest' ? 'selected' : '' }}>
+                                        mới nhất</option>
                                     <option value="low" {{ request()->input('sort_by') == 'low' ? 'selected' : '' }}>từ
                                         thấp tới cao</option>
                                     <option value="high" {{ request()->input('sort_by') == 'high' ? 'selected' : '' }}>
@@ -89,8 +134,13 @@
                                 <h5 class="price">
                                     {{ number_format($dish->gia_mon_an, 0, ',', '.') }} đ
                                 </h5>
-                                <a class="add_to_cart" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">add
-                                    to cart</a>
+                                <a class="add_to_cart" href="#" data-bs-toggle="modal" data-bs-target="#cartModal"
+                                    data-dish-id="{{ $dish->id }}"
+                                    data-dish-name="{{ $dish->ten_mon_an }}"
+                                    data-dish-img="{{ asset('storage/' . $dish->anh_mon_an) }}"
+                                    data-dish-price="{{ $dish->gia_mon_an }}">
+                                    add to cart
+                                </a>
                                 <ul class="d-flex flex-wrap justify-content-end">
                                     <li>
                                         <a href="#" class="add-to-favorite" data-dish-id="{{ $dish->id }}">

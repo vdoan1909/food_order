@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
-use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -205,6 +204,7 @@ class AccountController extends Controller
     {
         Auth::logout();
         $this->clearUserSession($request);
+        session()->put("toastShown", false);
         return redirect()->route('client.login.add');
     }
 

@@ -355,38 +355,65 @@
                 tong_tien.text(new_price.toLocaleString('vi-VN') + ' VND')
 
                 updateTotalItemsInCart()
+
+                $.ajax({
+                    url: '{{ route('client.cart.update') }}',
+                    method: 'PUT',
+                    data: {
+                        cart_id: cart_id,
+                        so_luong: currentQuantity,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            FuiToast(response.message, {
+                                style: {
+                                    backgroundColor: '#1DC071',
+                                    width: 'auto',
+                                    color: "#ffffff",
+                                }
+                            })
+                        }
+                    },
+                })
             }
         })
 
-        // increase_btn.off('click').on('click', function(e) {
-        //     e.preventDefault()
-        //     var cart_id = $(this).data('cart-id')
-        //     let currentQuantity = parseInt(so_luong.val())
-        //     currentQuantity += 1
-        //     so_luong.val(currentQuantity)
-        //     let price = $(".pro_status h6")
-        //     let total_price = parseFloat(price.text().replace(/[^\d]/g, ''))
-        //     let new_price = update(currentQuantity, total_price)
-        //     // console.log('new_price:', new_price)
-        //     tong_tien.text(new_price.toLocaleString('vi-VN') + ' VND')
+        increase_btn.off('click').on('click', function(e) {
+            e.preventDefault()
+            var cart_id = $(this).data('cart-id')
+            let currentQuantity = parseInt(so_luong.val())
+            currentQuantity += 1
+            so_luong.val(currentQuantity)
+            let price = $(".pro_status h6")
+            let total_price = parseFloat(price.text().replace(/[^\d]/g, ''))
+            let new_price = update(currentQuantity, total_price)
+            // console.log('new_price:', new_price)
+            tong_tien.text(new_price.toLocaleString('vi-VN') + ' VND')
 
-        //     updateTotalItemsInCart()
+            updateTotalItemsInCart()
 
-        //     $.ajax({
-        //         url: '{{ route('client.cart.update') }}',
-        //         method: 'PUT',
-        //         data: {
-        //             cart_id: cart_id,
-        //             so_luong: currentQuantity,
-        //             _token: '{{ csrf_token() }}'
-        //         },
-        //         success: function(response) {
-        //             if (response.success) {
-        //                 alert("Số lượng đã được cập nhật !")
-        //             }
-        //         },
-        //     })
-        // })
+            $.ajax({
+                url: '{{ route('client.cart.update') }}',
+                method: 'PUT',
+                data: {
+                    cart_id: cart_id,
+                    so_luong: currentQuantity,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    if (response.success) {
+                        FuiToast(response.message, {
+                            style: {
+                                backgroundColor: '#1DC071',
+                                width: 'auto',
+                                color: "#ffffff",
+                            }
+                        })
+                    }
+                },
+            })
+        })
 
         function update(quantity, price) {
             let newTotalPrice = price * quantity
