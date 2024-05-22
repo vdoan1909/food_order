@@ -332,66 +332,28 @@
 
 <script>
     $(document).ready(function() {
-        var so_luong = $('.quantity-input')
-        var tong_tien = $('.pro_tk h6')
-        var sub_total_cart = $('.subtotal span')
-        var total_cart = $('.total span')
+        let decrease_btn = $('.decrease-btn');
+        let increase_btn = $('.increase-btn');
 
-        let decrease_btn = $('.decrease-btn')
-        let increase_btn = $('.increase-btn')
+        $('.quantity-input').on('input', function(e) {
+            e.preventDefault();
 
-        decrease_btn.off('click').on('click', function(e) {
-            e.preventDefault()
-            var cart_id = $(this).data('cart-id')
-            let currentQuantity = parseInt(so_luong.val())
-            if (currentQuantity > 0) {
-                currentQuantity -= 1
-                currentQuantity = currentQuantity < 1 ? 1 : currentQuantity
-                so_luong.val(currentQuantity)
-                let price = $(".pro_status h6")
-                let total_price = parseFloat(price.text().replace(/[^\d]/g, ''))
-                let new_price = update(currentQuantity, total_price)
-                // console.log('new_price:', new_price)
-                tong_tien.text(new_price.toLocaleString('vi-VN') + ' VND')
-
-                updateTotalItemsInCart()
-
-                $.ajax({
-                    url: '{{ route('client.cart.update') }}',
-                    method: 'PUT',
-                    data: {
-                        cart_id: cart_id,
-                        so_luong: currentQuantity,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            FuiToast(response.message, {
-                                style: {
-                                    backgroundColor: '#1DC071',
-                                    width: 'auto',
-                                    color: "#ffffff",
-                                }
-                            })
-                        }
-                    },
-                })
+            let so_luong = $(this);
+            let currentQuantity = parseInt(so_luong.val());
+            if (isNaN(currentQuantity) || currentQuantity < 1) {
+                currentQuantity = 1;
+                so_luong.val(currentQuantity);
             }
-        })
+            let cart_id = so_luong.siblings('button').data('cart-id');
 
-        increase_btn.off('click').on('click', function(e) {
-            e.preventDefault()
-            var cart_id = $(this).data('cart-id')
-            let currentQuantity = parseInt(so_luong.val())
-            currentQuantity += 1
-            so_luong.val(currentQuantity)
-            let price = $(".pro_status h6")
-            let total_price = parseFloat(price.text().replace(/[^\d]/g, ''))
-            let new_price = update(currentQuantity, total_price)
-            // console.log('new_price:', new_price)
-            tong_tien.text(new_price.toLocaleString('vi-VN') + ' VND')
+            let price_element = $(this).closest('tr').find(".pro_status h6");
+            let total_element = $(this).closest('tr').find(".pro_tk h6");
+            let price = parseFloat(price_element.text().replace(/[^\d]/g, ''));
+            let new_total = price * currentQuantity;
 
-            updateTotalItemsInCart()
+            total_element.text(new_total.toLocaleString('vi-VN') + ' VND');
+
+            updateTotalCart();
 
             $.ajax({
                 url: '{{ route('client.cart.update') }}',
@@ -409,30 +371,78 @@
                                 width: 'auto',
                                 color: "#ffffff",
                             }
-                        })
+                        });
                     }
                 },
-            })
-        })
+            });
+        });
 
-        function update(quantity, price) {
-            let newTotalPrice = price * quantity
-            return newTotalPrice
+        decrease_btn.click(function(e) {
+            e.preventDefault();
+
+            handleQuantityChange($(this), -1);
+        });
+
+        increase_btn.click(function(e) {
+            e.preventDefault();
+
+            handleQuantityChange($(this), 1);
+        });
+
+        function handleQuantityChange(button, quantityChange) {
+            let input_element = button.siblings('.quantity-input');
+            let currentQuantity = parseInt(input_element.val());
+            currentQuantity += quantityChange;
+            if (currentQuantity < 1) {
+                currentQuantity = 1;
+            }
+            input_element.val(currentQuantity);
+
+            let cart_id = button.data('cart-id');
+            let price_element = button.closest('tr').find(".pro_status h6");
+            let total_element = button.closest('tr').find(".pro_tk h6");
+            let price = parseFloat(price_element.text().replace(/[^\d]/g, ''));
+            let new_total = price * currentQuantity;
+
+            total_element.text(new_total.toLocaleString('vi-VN') + ' VND');
+
+            updateTotalCart();
+
+            $.ajax({
+                url: '{{ route('client.cart.update') }}',
+                method: 'PUT',
+                data: {
+                    cart_id: cart_id,
+                    so_luong: currentQuantity,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    if (response.success) {
+                        FuiToast(response.message, {
+                            style: {
+                                backgroundColor: '#1DC071',
+                                width: 'auto',
+                                color: "#ffffff",
+                            }
+                        });
+                    }
+                },
+            });
         }
 
-        function updateTotalItemsInCart() {
-            let tong_tien_elements = $(".pro_tk h6")
-            let total_cart = 0
+        function updateTotalCart() {
+            let total_elements = $(".pro_tk h6");
+            let total_cart = 0;
 
-            $.each(tong_tien_elements, function() {
-                let tong_tien = parseFloat($(this).text().replace(/[^\d]/g, ''))
-                total_cart += tong_tien
-            })
+            $.each(total_elements, function() {
+                let total = parseFloat($(this).text().replace(/[^\d]/g, ''));
+                total_cart += total;
+            });
 
-            $(".subtotal span").text(total_cart.toLocaleString('vi-VN') + ' VND')
-            $(".total span").text(total_cart.toLocaleString('vi-VN') + ' VND')
+            $(".subtotal span").text(total_cart.toLocaleString('vi-VN') + ' VND');
+            $(".total span").text(total_cart.toLocaleString('vi-VN') + ' VND');
         }
-    })
+    });
 </script>
 
 </html>
