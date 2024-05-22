@@ -99,4 +99,14 @@ class CartController extends Controller
 
         return response()->json(['success' => false, 'message' => 'Không tìm thấy sản phẩm trong giỏ hàng']);
     }
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+
+        $is_delete = Cart::where("id", $id)->delete();
+        if ($is_delete) {
+            return response()->json(["success" => true, "message" => "Sản phẩm đã được xóa khỏi giỏ hàng!"]);
+        }
+    }
 }

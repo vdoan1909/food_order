@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Dish;
+use App\Models\Rating;
 use App\Models\SideDish;
 use Illuminate\Http\Request;
 use User;
@@ -26,15 +27,27 @@ class HomeController extends Controller
         return view("client.home", compact("categorys", "dish_populars"));
     }
 
-    public function detail($id)
+    public function detail(Request $request, $id)
     {
         $dish_detail = Dish::find($id);
-        if ($dish_detail) {
-            $dish_detail->luot_xem += 1;
-            $dish_detail->save();
-            return view("client.pages.detail", compact("dish_detail"));
-        } else {
-            return view("404");
+        if ($request->session()->has('customer') || $request->session()->has('admin')) {
+            $id_user = null;
+
+            if ($request->session()->has('customer')) {
+                $id_user = session()->get('customer')->id;
+            } elseif ($request->session()->has('admin')) {
+                $id_user = session()->get('admin')->id;
+            }
+
+            $get_rate = Rating::where('id_mon_an', $id)->where('id_khach_hang', $id_user)->first();
+
+            if ($dish_detail) {
+                $dish_detail->luot_xem += 1;
+                $dish_detail->save();
+                return view("client.pages.detail", compact("dish_detail", "get_rate"));
+            } else {
+                return view("404");
+            }
         }
     }
 

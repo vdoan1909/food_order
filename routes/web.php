@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SideDishController;
 use Illuminate\Support\Facades\Route;
 
@@ -89,4 +90,7 @@ Route::prefix("client")->group(function () {
     Route::get("cart", [CartController::class, "index"])->name("client.cart");
     Route::post("cart/add", [CartController::class, "store"])->name("client.cart.add");
     Route::put("cart/update", [CartController::class, "update"])->name("client.cart.update");
+    Route::get("delete/cart", [CartController::class, "delete"])->name("client.cart.delete");
+    // rating
+    Route::post("dish/star", [RatingController::class, "store"])->name("client.dish.rating");
 });

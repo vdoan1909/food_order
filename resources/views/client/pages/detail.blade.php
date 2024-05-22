@@ -86,11 +86,15 @@
                             {{ number_format($dish_detail->gia_mon_an, 0, ',', '.') }} đ
                         </h3>
                         <p class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <i class="far fa-star"></i>
+                            @for ($i = 0; $i < 5; $i++)
+                                @if ($i < $get_rate->so_sao)
+                                    <i style="color: #ff9933" class="fas fa-star" data-rating="1"
+                                        data-dish-id="{{ $dish_detail->id }}"></i>
+                                @else
+                                    <i style="color: #231f40" class="fas fa-star" data-rating="1"
+                                        data-dish-id="{{ $dish_detail->id }}"></i>
+                                @endif
+                            @endfor
                             <span>(201)</span>
                         </p>
                         <p class="short_description">
@@ -99,8 +103,9 @@
 
                         <ul class="details_button_area d-flex flex-wrap">
                             <li>
-                                <a class="common_btn add_to_cart" href="#" data-bs-toggle="modal" data-bs-target="#cartModal"
-                                    data-dish-id="{{ $dish_detail->id }}" data-dish-name="{{ $dish_detail->ten_mon_an }}"
+                                <a class="common_btn add_to_cart" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#cartModal" data-dish-id="{{ $dish_detail->id }}"
+                                    data-dish-name="{{ $dish_detail->ten_mon_an }}"
                                     data-dish-img="{{ asset('storage/' . $dish_detail->anh_mon_an) }}"
                                     data-dish-price="{{ $dish_detail->gia_mon_an }}">
                                     add to cart
@@ -108,7 +113,8 @@
                             </li>
 
                             <li>
-                                <a class="common_btn" href="#">
+                                <a href="#" class="common_btn add-to-favorite"
+                                    data-dish-id="{{ $dish_detail->id }}">
                                     wishlist
                                 </a>
                             </li>
@@ -119,133 +125,23 @@
                     <div class="menu_description_area mt_100 xs_mt_70">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                    aria-selected="true">Description</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                <button class="nav-link active" id="pills-contact-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-contact" type="button" role="tab"
-                                    aria-controls="pills-contact" aria-selected="false">Reviews</button>
+                                    aria-controls="pills-contact" aria-selected="false">Đánh giá</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                aria-labelledby="pills-home-tab" tabindex="0">
-                                <div class="menu_det_description">
-                                    <p>Ipsum dolor, sit amet consectetur adipisicing elit. Doloribus consectetur
-                                        ullam in? Beatae, dolorum ad ea deleniti ratione voluptatum similique omnis
-                                        voluptas tempora optio soluta vero veritatis reiciendis blanditiis architecto.
-                                        Debitis nesciunt inventore voluptate tempora ea incidunt iste, corporis, quo
-                                        cumque facere doloribus possimus nostrum sed magni quasi, assumenda autem!
-                                        Repudiandae nihil magnam provident illo alias vero odit repellendus, ipsa nemo
-                                        itaque. Aperiam fuga, magnam quia illum minima blanditiis tempore. vero
-                                        veritatis reiciendis blanditiis architecto. Debitis nesciunt inventore voluptate
-                                        tempora ea incidunt iste, corporis, quo cumque facere doloribus possimus nostrum
-                                        sed magni quasi</p>
-                                    <ul>
-                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit Doloribus.</li>
-                                        <li>Dolor sit amet consectetur adipisicing elit. Earum itaque nesciunt.</li>
-                                        <li>Corporis quo cumque facere doloribus possimus nostrum sed magni quasi.</li>
-                                        <li>Incidunt iste corporis quo cumque facere doloribus possimus nostrum sed.
-                                        </li>
-                                        <li>Incidunt iste corporis quo cumque facere doloribus possimus nostrum sed.
-                                        </li>
-                                        <li>Architecto Debitis nesciunt inventore voluptate tempora ea.</li>
-                                        <li>Earum itaque nesciunt dolor laudantium placeat sed velit aspernatur.</li>
-                                        <li>Laudantium placeat sed velit aspernatur nobis quos quibusdam distinctio.
-                                        </li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum itaque nesciunt
-                                        dolor laudantium placeat sed velit aspernatur, nobis quos quibusdam distinctio
-                                        voluptatum officia vel sapiente enim, reprehenderit impedit beatae molestias
-                                        dolorum. A laborum consectetur sed quis exercitationem optio consequatur, unde
-                                        neque est odit, pariatur quae incidunt quasi dolorem nihil aliquid ut veritatis
-                                        porro eaque cupiditate voluptatem vel ad! Asperiores, praesentium. sit amet
-                                        consectetur adipisicing elit. Doloribus consectetur ullam in? Beatae, dolorum ad
-                                        ea deleniti ratione voluptatum similique omnis voluptas tempora optio soluta</p>
-
-                                    <ul>
-                                        <li>Reiciendis blanditiis architecto. Debitis nesciunt inventore voluptate
-                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit Doloribus.</li>
-                                        <li>Dolor sit amet consectetur adipisicing elit. Earum itaque nesciunt.</li>
-                                        <li>Corporis quo cumque facere doloribus possimus nostrum sed magni quasi.</li>
-                                        <li>Incidunt iste corporis quo cumque facere doloribus possimus nostrum sed.
-                                        </li>
-                                        <li>Incidunt iste corporis quo cumque facere doloribus possimus nostrum sed.
-                                        </li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus consectetur
-                                        ullam in? Beatae, dolorum ad ea deleniti ratione voluptatum similique omnis
-                                        voluptas tempora optio soluta vero veritatis reiciendis blanditiis architecto.
-                                        Debitis nesciunt inventore voluptate tempora ea incidunt iste, corporis, quo
-                                        cumque facere doloribus possimus nostrum sed magni quasi, assumenda autem!
-                                        Repudiandae nihil magnam provident illo alias vero odit repellendus, ipsa nemo
-                                        itaque. Aperiam fuga, magnam quia illum minima blanditiis tempore.</p>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="pills-contact" role="tabpanel"
                                 aria-labelledby="pills-contact-tab" tabindex="0">
                                 <div class="review_area">
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <h4>04 reviews</h4>
+                                            <h4>04 đánh giá</h4>
                                             <div class="comment pt-0 mt_20">
                                                 <div class="single_comment m-0 border-0">
                                                     <img src="images/client_1.png" alt="review" class="img-fluid">
                                                     <div class="single_comm_text">
                                                         <h3>Michel Holder <span>29 oct 2022 </span></h3>
-                                                        <span class="rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fad fa-star-half-alt"></i>
-                                                            <i class="fal fa-star"></i>
-                                                            <b>(120)</b>
-                                                        </span>
-                                                        <p>Sure there isn't anything embarrassing hiidden in the
-                                                            middles of text. All erators on the Internet
-                                                            tend to repeat predefined chunks</p>
-                                                    </div>
-                                                </div>
-                                                <div class="single_comment">
-                                                    <img src="images/client_2.png" alt="review" class="img-fluid">
-                                                    <div class="single_comm_text">
-                                                        <h3>salina khan <span>29 oct 2022 </span></h3>
-                                                        <span class="rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fad fa-star-half-alt"></i>
-                                                            <i class="fal fa-star"></i>
-                                                            <b>(120)</b>
-                                                        </span>
-                                                        <p>Sure there isn't anything embarrassing hiidden in the
-                                                            middles of text. All erators on the Internet
-                                                            tend to repeat predefined chunks</p>
-                                                    </div>
-                                                </div>
-                                                <div class="single_comment">
-                                                    <img src="images/client_3.png" alt="review" class="img-fluid">
-                                                    <div class="single_comm_text">
-                                                        <h3>Mouna Sthesia <span>29 oct 2022 </span></h3>
-                                                        <span class="rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fad fa-star-half-alt"></i>
-                                                            <i class="fal fa-star"></i>
-                                                            <b>(120)</b>
-                                                        </span>
-                                                        <p>Sure there isn't anything embarrassing hiidden in the
-                                                            middles of text. All erators on the Internet
-                                                            tend to repeat predefined chunks</p>
-                                                    </div>
-                                                </div>
-                                                <div class="single_comment">
-                                                    <img src="images/client_4.png" alt="review" class="img-fluid">
-                                                    <div class="single_comm_text">
-                                                        <h3>marjan janifar <span>29 oct 2022 </span></h3>
                                                         <span class="rating">
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
@@ -285,33 +181,30 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="post_review">
-                                                <h4>write a Review</h4>
+                                                <h4>viết 1 đánh giá</h4>
                                                 <form>
-                                                    <p class="rating">
-                                                        <span>select your rating : </span>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
+                                                    <p class="rating" id="rating">
+                                                        <span>đánh giá sao : </span>
+                                                        <i class="fas fa-star" data-rating="1"
+                                                            data-dish-id="{{ $dish_detail->id }}"></i>
+                                                        <i class="fas fa-star" data-rating="2"
+                                                            data-dish-id="{{ $dish_detail->id }}"></i>
+                                                        <i class="fas fa-star" data-rating="3"
+                                                            data-dish-id="{{ $dish_detail->id }}"></i>
+                                                        <i class="fas fa-star" data-rating="4"
+                                                            data-dish-id="{{ $dish_detail->id }}"></i>
+                                                        <i class="fas fa-star" data-rating="5"
+                                                            data-dish-id="{{ $dish_detail->id }}"></i>
                                                     </p>
                                                     <div class="row">
                                                         <div class="col-xl-12">
-                                                            <input type="text" placeholder="Name">
-                                                        </div>
-                                                        <div class="col-xl-12">
-                                                            <input type="email" placeholder="Email">
-                                                        </div>
-                                                        <div class="col-xl-12">
-                                                            <textarea rows="3" placeholder="Write your review"></textarea>
+                                                            <textarea rows="3" placeholder="Viết đánh giá của bạn"></textarea>
                                                         </div>
                                                         <div class="col-12">
-                                                            <button class="common_btn" type="submit">submit
-                                                                review</button>
+                                                            <button class="common_btn" type="submit">đánh giá</button>
                                                         </div>
                                                     </div>
                                                 </form>

@@ -9,10 +9,10 @@
         <div class="breadcrumb_overlay">
             <div class="container">
                 <div class="breadcrumb_text">
-                    <h1>cart view</h1>
+                    <h1>giỏ hàng</h1>
                     <ul>
-                        <li><a href="{{ route('client.home') }}">home</a></li>
-                        <li><a href="#">cart view</a></li>
+                        <li><a href="{{ route('client.home') }}">trang chủ</a></li>
+                        <li><a href="#">giỏ hàng</a></li>
                     </ul>
                 </div>
             </div>
@@ -42,28 +42,26 @@
                                     <tbody>
                                         <tr>
                                             <th class="pro_img">
-                                                Image
+                                                Ảnh
                                             </th>
 
                                             <th class="pro_name">
-                                                details
+                                                Tên
                                             </th>
 
                                             <th class="pro_status">
-                                                price
+                                                Giá
                                             </th>
 
                                             <th class="pro_select">
-                                                quantity
+                                                Số lượng
                                             </th>
 
                                             <th class="pro_tk">
-                                                total
+                                                Tổng tiền
                                             </th>
 
-                                            <th class="pro_icon">
-                                                <a class="clear_all" href="#">clear all</a>
-                                            </th>
+                                            <th class="pro_icon"></th>
                                         </tr>
                                         <?php $total_cart = 0; ?>
                                         @foreach ($carts as $cart)
@@ -105,7 +103,10 @@
                                                 </td>
 
                                                 <td class="pro_icon">
-                                                    <a href="#"><i class="far fa-times"></i></a>
+                                                    <a href="#" class="btn_del_cart"
+                                                        data-cart-id="{{ $cart->id }}">
+                                                        <i class="far fa-times"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             <?php $total_cart += $cart->tong_tien; ?>
