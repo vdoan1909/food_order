@@ -579,4 +579,17 @@
             };
         </script>
     @endif
+
+    @if (session('pay_success'))
+        <script>
+            window.onload = function() {
+                FuiToast("{{ session('pay_success') }}", {
+                    style: {
+                            backgroundColor: '#1DC071',
+                            width: 'auto'
+                        },
+                })
+            };
+        </script>
+    @endif
 @endsection

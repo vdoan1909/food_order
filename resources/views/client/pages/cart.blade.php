@@ -128,23 +128,50 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-5 col-md-6">
-                                    <div class="cart_list_footer_button_text">
+                                    <form class="cart_list_footer_button_text" action="{{ route('client.payment') }}"
+                                        method="POST">
+                                        @csrf
+                                        <input type="hidden" name="total" value="{{ $total_cart }}">
                                         <h6>total cart</h6>
                                         <p class="subtotal">subtotal:
                                             <span>
                                                 {{ number_format($total_cart, 0, ',', '.') }} VND
-
                                             </span>
                                         </p>
                                         <p class="total">
                                             <span>total:</span>
                                             <span>
                                                 {{ number_format($total_cart, 0, ',', '.') }} VND
-
                                             </span>
                                         </p>
-                                        <a class="common_btn" href="check_out.html">checkout</a>
-                                    </div>
+                                        <button
+                                            style="
+                                            width: 100%;
+                                            height: 50px;
+                                            margin-top: 10px;
+                                            text-transform: capitalize;
+                                            padding: 5px 20px 6px 20px;
+                                            text-align: center;
+                                            border-radius: 30px;
+                                            background: var(--colorPrimary);
+                                            color: var(--colorWhite);
+                                            font-size: 14px;
+                                            font-weight: 600;
+                                            position: static;
+                                            top: 0; 
+                                            right: 0; 
+                                            transform: translateY(0); 
+                                            -webkit-transform: translateY(0); 
+                                            -moz-transform: translateY(0);
+                                            -ms-transform: translateY(0);
+                                            -o-transform: translateY(0);
+                                            transition: all linear .3s; 
+                                            -webkit-transition: all linear .3s; 
+                                            -moz-transition: all linear .3s;
+                                            -ms-transition: all linear .3s;
+                                            -o-transition: all linear .3s;"
+                                            type="submit" name="redirect">checkout</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

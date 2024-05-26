@@ -12,9 +12,6 @@ $(function () {
             $('.main_menu').removeClass('menu_fix');
         }
     });
-    //=========NICE SELECT=========
-    $('.select_js').niceSelect();
-
 
     //=======OFFER ITEM SLIDER======
     $('.offer_item_slider').slick({

@@ -88,7 +88,7 @@ img {
 }
 
 input,
-textarea {
+textarea, select {
     width: 100%;
     padding: 12px 20px;
     outline: none;
@@ -1220,7 +1220,7 @@ button {
 }
 
 .reservation_input_single,
-.reservation_input_single .nice-select {
+.reservation_input_single .select_js {
     margin-bottom: 20px;
 }
 
@@ -2885,7 +2885,7 @@ footer {
     width: 100%;
 }
 
-.menu_search .nice-select {
+.menu_search .select_js {
     border-radius: 30px;
     padding: 12px 30px;
     border: 1px solid #ddd !important;
@@ -2895,7 +2895,7 @@ footer {
     -o-border-radius: 30px;
 }
 
-.menu_search .nice-select:after {
+.menu_search .select_js:after {
     margin-top: -3px;
     right: 30px;
 }
@@ -4520,10 +4520,11 @@ footer {
     margin-bottom: 25px;
 }
 
-.check_single_form .nice-select {
+.check_single_form .select_js {
+    width: 100%;
     border: 1px solid #eee !important;
     padding: 12px 20px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .checkout_single_address ul {
@@ -4838,28 +4839,28 @@ footer {
 
 .pay_modal_info input,
 .pay_modal_info textarea,
-.pay_modal_info .nice-select {
+.pay_modal_info .select_js {
     border: 1px solid #eee;
     margin-top: 15px;
     font-weight: 400;
     border-radius: 30px;
 }
 
-.pay_modal_info .nice-select:after {
+.pay_modal_info .select_js:after {
     margin-top: -3px;
     right: 20px;
 }
 
-.pay_modal_info .nice-select {
+.pay_modal_info .select_js {
     margin-top: 10px;
 }
 
-.pay_modal_info .nice-select .option {
+.pay_modal_info .select_js .option {
     font-weight: 400;
     margin: 0;
 }
 
-.pay_modal_info .nice-select .option::after {
+.pay_modal_info .select_js .option::after {
     display: none;
 }
 
@@ -5349,7 +5350,7 @@ footer {
     flex-wrap: wrap;
 }
 
-.dashboard_address .check_single_form .nice-select {
+.dashboard_address .check_single_form .select_js {
     margin-bottom: 0;
 }
 

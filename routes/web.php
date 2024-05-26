@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SideDishController;
 use Illuminate\Support\Facades\Route;
@@ -93,4 +94,8 @@ Route::prefix("client")->group(function () {
     Route::get("delete/cart", [CartController::class, "delete"])->name("client.cart.delete");
     // rating
     Route::post("dish/star", [RatingController::class, "store"])->name("client.dish.rating");
+    //payment
+    Route::post("payment", [PaymentController::class, "vnpay_payment"])->name("client.payment");
+    Route::get("checkout", [PaymentController::class, "checkout"])->name("client.cart.checkout");
+    Route::post("checkout/confirm", [PaymentController::class, "checkout_confirm"])->name("client.checkout.confirm");
 });
