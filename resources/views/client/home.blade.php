@@ -586,6 +586,7 @@
                 FuiToast("{{ session('pay_success') }}", {
                     style: {
                             backgroundColor: '#1DC071',
+                            color: '#ffffff',
                             width: 'auto'
                         },
                 })

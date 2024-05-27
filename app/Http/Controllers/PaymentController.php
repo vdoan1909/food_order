@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bill;
+use App\Models\BillDetail;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -102,8 +104,12 @@ class PaymentController extends Controller
 
     public function checkout_confirm(Request $request)
     {
+        // $id_dishs = $request->input('id_dish_check_out');
+        // dd($id_dishs);
+
         $data = $request->all();
-        $data['address'] = $data['pay_city'] . ', ' . $data['pay_district'] . ', ' . $data['pay_ward'];
+        $data['address'] = $data['pay_ward'] . ', ' . $data['pay_district'] . ', ' . $data['pay_city'];
+        $id_dishs = $request->input('id_dish_check_out');
 
         if ($request->session()->has('customer') || $request->session()->has('admin')) {
             $id = null;
@@ -114,8 +120,32 @@ class PaymentController extends Controller
                 $id = session()->get('admin')->id;
             }
 
+            $request->validate(
+                [
+                    'pay_username' => 'required',
+                    'pay_city' => 'required',
+                    'pay_district' => 'required',
+                    'pay_ward' => 'required',
+                    'pay_email' => 'required|email',
+                    'pay_phone' => 'required|numeric|min:10',
+                    'pay_type' => 'required'
+                ],
+                [
+                    'pay_username.required' => 'Tên người nhận là bắt buộc.',
+                    'pay_city.required' => 'Địa chỉ là bắt buộc.',
+                    'pay_district.required' => 'Địa chỉ là bắt buộc.',
+                    'pay_ward.required' => 'Địa chỉ là bắt buộc.',
+                    'pay_email.required' => 'Email là bắt buộc.',
+                    'pay_email.email' => 'Email không hợp lệ.',
+                    'pay_phone.required' => 'Số điện thoại là bắt buộc.',
+                    'pay_phone.numeric' => 'Số điện thoại phải là một số.',
+                    'pay_phone.min' => 'Số điện thoại không hợp lệ.',
+                    'pay_type.required' => 'Phương thức thanh toán chưa được chọn.'
+                ]
+            );
+
             if ($data["pay_type"] == 1) {
-                $is_order = Order::insert(
+                $is_order = Order::create(
                     [
                         "ten_nguoi_nhan" => $data["pay_username"],
                         "dia_chi_nhan" => $data["address"],
@@ -126,7 +156,30 @@ class PaymentController extends Controller
                     ]
                 );
 
-                if($is_order){
+                $ma_don_hang = $is_order->id . date('YmdHis');
+                $is_bill = Bill::create(
+                    [
+                        "id_khach_hang" => $id,
+                        "ma_don_hang" => $ma_don_hang,
+                        "trang_thai" => 0,
+                        "loai_thanh_toan" => $data["pay_type"]
+                    ]
+                );
+
+                // chuyen tat ca id mon an thanh 1 chuoi, them vao cot id_mon_an cach nhau boi dau ,
+                $id_dish_string = implode(',', $id_dishs);
+
+                $bill_detail = [
+                    "ma_don_hang" => $ma_don_hang,
+                    "id_mon_an" => $id_dish_string,
+                    "so_luong_mua" => $data['quantity']
+                ];
+
+                $is_bill_detail = BillDetail::create($bill_detail);
+
+                if ($is_order && $is_bill && $is_bill_detail != null) {
+                    Cart::where('id_khach_hang', $id)->delete();
+
                     return redirect()->route('client.home')->with('pay_success', '😍 Đơn hàng của bạn sẽ được giao sau ít phút');
                 }
             }

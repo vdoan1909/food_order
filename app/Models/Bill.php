@@ -16,7 +16,7 @@ class Bill extends Model
         "id_khach_hang",
         "ma_don_hang",
         "ngay_mua",
-        "id_trang_thai",
+        "trang_thai",
         "loai_thanh_toan"
     ];
 }

@@ -128,9 +128,13 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-5 col-md-6">
-                                    <form class="cart_list_footer_button_text" action="{{ route('client.payment') }}"
-                                        method="POST">
+                                    <form class="cart_list_footer_button_text" action="{{ route('client.cart.checkout') }}"
+                                        method="GET">
                                         @csrf
+                                        @foreach ($carts as $cart)
+                                            <input type="hidden" name="id_dish_check_out[]"
+                                                value="{{ $cart->id_mon_an }}">
+                                        @endforeach
                                         <input type="hidden" name="total" value="{{ $total_cart }}">
                                         <h6>total cart</h6>
                                         <p class="subtotal">subtotal:

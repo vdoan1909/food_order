@@ -378,11 +378,11 @@
                                 }),
                                 setTimeout(() => {
                                     location.reload()
-                                }, 1000);
+                                }, 680);
                         }
                     },
                 })
-            }, 500);
+            }, 300);
         })
 
         decrease_btn.click(function(e) {
@@ -436,11 +436,11 @@
                                 }),
                                 setTimeout(() => {
                                     location.reload()
-                                }, 1000);
+                                }, 600);
                         }
                     },
                 })
-            }, 500);
+            }, 300);
         }
 
         function updateTotalCart() {
@@ -544,72 +544,71 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var citis = document.getElementById("city");
-        var districts = document.getElementById("district");
-        var wards = document.getElementById("ward");
+   document.addEventListener("DOMContentLoaded", function() {
+            var citis = document.getElementById("city");
+            var districts = document.getElementById("district");
+            var wards = document.getElementById("ward");
 
-        var Parameter = {
-            url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
-            method: "GET",
-        };
+            var Parameter = {
+                url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+                method: "GET",
+            };
 
-        axios(Parameter).then(function(result) {
-            console.log("Dữ liệu đã được lấy thành công:", result.data);
-            renderCity(result.data);
-        }).catch(function(error) {
-            console.error("Lỗi khi lấy dữ liệu:", error);
-        });
-
-        function renderCity(data) {
-            // Xóa tất cả các tùy chọn trong dropdown 'city'
-            citis.innerHTML = '<option value="">Tỉnh/Thành phố:</option>';
-
-            // Điền dữ liệu vào dropdown 'city'
-            data.forEach(function(city) {
-                var option = new Option(city.Name, city.Id);
-                citis.add(option);
+            axios(Parameter).then(function(result) {
+                console.log("Dữ liệu đã được lấy thành công:", result.data);
+                renderCity(result.data);
+            }).catch(function(error) {
+                console.error("Lỗi khi lấy dữ liệu:", error);
             });
 
-            citis.onchange = function() {
-                console.log("Tỉnh/Thành phố đã chọn:", this.value);
-                districts.innerHTML = '<option value="">Quận/Huyện:</option>';
-                wards.innerHTML = '<option value="">Phường/Xã:</option>';
-                districts.disabled = true;
-                wards.disabled = true;
+            function renderCity(data) {
+                // Xóa tất cả các tùy chọn trong dropdown 'city'
+                citis.innerHTML = '<option value="">Tỉnh/Thành phố:</option>';
 
-                if (this.value !== "") {
-                    var selectedCity = data.find(city => city.Id === this.value);
-                    if (selectedCity && selectedCity.Districts) {
-                        districts.disabled = false;
-                        selectedCity.Districts.forEach(function(district) {
-                            var option = new Option(district.Name, district.Id);
-                            districts.add(option);
-                        });
+                // Điền dữ liệu vào dropdown 'city'
+                data.forEach(function(city) {
+                    var option = new Option(city.Name, city.Name);
+                    citis.add(option);
+                });
+
+                citis.onchange = function() {
+                    console.log("Tỉnh/Thành phố đã chọn:", this.value);
+                    districts.innerHTML = '<option value="">Quận/Huyện:</option>';
+                    wards.innerHTML = '<option value="">Phường/Xã:</option>';
+                    districts.disabled = true;
+                    wards.disabled = true;
+
+                    if (this.value !== "") {
+                        var selectedCity = data.find(city => city.Name === this.value);
+                        if (selectedCity && selectedCity.Districts) {
+                            districts.disabled = false;
+                            selectedCity.Districts.forEach(function(district) {
+                                var option = new Option(district.Name, district.Name);
+                                districts.add(option);
+                            });
+                        }
                     }
-                }
-            };
+                };
 
-            districts.onchange = function() {
-                console.log("Quận/Huyện đã chọn:", this.value);
-                wards.innerHTML = '<option value="">Phường/Xã:</option>';
-                wards.disabled = true;
+                districts.onchange = function() {
+                    console.log("Quận/Huyện đã chọn:", this.value);
+                    wards.innerHTML = '<option value="">Phường/Xã:</option>';
+                    wards.disabled = true;
 
-                if (this.value !== "") {
-                    var selectedCity = data.find(city => city.Id === citis.value);
-                    var selectedDistrict = selectedCity.Districts.find(district => district.Id === this
-                        .value);
-                    if (selectedDistrict && selectedDistrict.Wards) {
-                        wards.disabled = false;
-                        selectedDistrict.Wards.forEach(function(ward) {
-                            var option = new Option(ward.Name, ward.Id);
-                            wards.add(option);
-                        });
+                    if (this.value !== "") {
+                        var selectedCity = data.find(city => city.Name === citis.value);
+                        var selectedDistrict = selectedCity.Districts.find(district => district.Name === this.value);
+                        if (selectedDistrict && selectedDistrict.Wards) {
+                            wards.disabled = false;
+                            selectedDistrict.Wards.forEach(function(ward) {
+                                var option = new Option(ward.Name, ward.Name);
+                                wards.add(option);
+                            });
+                        }
                     }
-                }
-            };
-        }
-    });
+                };
+            }
+        });
 </script>
 
 </html>

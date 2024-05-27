@@ -24,6 +24,10 @@
         <div class="container">
             <form method="POST" action="{{ route('client.checkout.confirm') }}" class="row">
                 @csrf
+                @foreach ($data['id_dish_check_out'] as $id_dish_check_out)
+                    <input type="hidden" name="id_dish_check_out[]" value="{{ $id_dish_check_out }}">
+                @endforeach
+                <input type="hidden" name="quantity" value="{{ $quantity }}">
                 <div class="col-xl-8 col-lg-7 wow fadeInUp" data-wow-duration="1s">
                     <div class="checkout_form">
                         <div class="check_form">
@@ -36,6 +40,9 @@
                                         <div class="check_single_form">
                                             <input type="text" placeholder="Tên người nhận" name="pay_username"
                                                 value="">
+                                            @error('pay_username')
+                                                <span style="color: red"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-12 col-xl-6">
@@ -43,26 +50,41 @@
                                             <select id="city" class="select_js" name="pay_city">
                                                 <option value="">Tỉnh/Thành phố:</option>
                                             </select>
+                                            @error('pay_city')
+                                                <span style="color: red"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                         <div class="check_single_form">
                                             <select id="district" class="select_js" name="pay_district">
                                                 <option value="">Quận/Huyện:</option>
                                             </select>
+                                            @error('pay_district')
+                                                <span style="color: red"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                         <div class="check_single_form">
                                             <select id="ward" class="select_js" name="pay_ward">
                                                 <option value="">Phường/Xã:</option>
                                             </select>
+                                            @error('pay_ward')
+                                                <span style="color: red"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-12 col-xl-6">
                                         <div class="check_single_form">
                                             <input type="text" placeholder="Số điện thoại *" name="pay_phone"
                                                 value="">
+                                            @error('pay_phone')
+                                                <span style="color: red"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                         <div class="check_single_form">
                                             <input type="text" placeholder="Email *" name="pay_email"
                                                 value="{{ session('customer')->email }}">
+                                            @error('pay_email')
+                                                <span style="color: red"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-12 col-xl-6">
@@ -72,6 +94,9 @@
                                                 <option value="1">Thanh toán khi nhận hàng</option>
                                                 <option value="2">Thanh toán bằng VNPay</option>
                                             </select>
+                                            @error('pay_type')
+                                                <span style="color: red"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-lg-12 col-xl-12">
@@ -91,9 +116,9 @@
                     <div id="sticky_sidebar" class="cart_list_footer_button">
                         <div class="cart_list_footer_button_text">
                             <h6>total cart ({{ $quantity }})</h6>
-                            <p>subtotal: <span> {{ number_format($data['vnp_Amount'] / 100, 0, ',', '.') }}</span></p>
+                            <p>subtotal: <span> {{ number_format($data['total'], 0, ',', '.') }}</span></p>
                             <p class="total"><span>total:</span> <span>
-                                    {{ number_format($data['vnp_Amount'] / 100, 0, ',', '.') }}</span></p>
+                                    {{ number_format($data['total'], 0, ',', '.') }}</span></p>
                             <button
                                 style="
                                 width: 100%;
