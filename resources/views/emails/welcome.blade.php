@@ -9,20 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="telephone=no" name="format-detection">
     <title></title>
-    <!--[if (mso 16)]>
-    <style type="text/css">
-    a {text-decoration: none;}
-    </style>
-    <![endif]-->
-    <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]-->
-    <!--[if gte mso 9]>
-<xml>
-    <o:OfficeDocumentSettings>
-    <o:AllowPNG></o:AllowPNG>
-    <o:PixelsPerInch>96</o:PixelsPerInch>
-    </o:OfficeDocumentSettings>
-</xml>
-<![endif]-->
 </head>
 
 <style>
@@ -54,9 +40,6 @@
         mso-hide: all;
     }
 
-    /*
-END OF IMPORTANT
-*/
     body {
         width: 100%;
         font-family: arial, 'helvetica neue', helvetica, sans-serif;
@@ -864,17 +847,10 @@ END CONFIG STYLES
             max-height: inherit !important;
         }
     }
-
-    /* END RESPONSIVE STYLES */
 </style>
 
 <body>
     <div dir="ltr" class="es-wrapper-color">
-        <!--[if gte mso 9]>
-   <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
-    <v:fill type="tile" color="#fafafa"></v:fill>
-   </v:background>
-  <![endif]-->
         <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0">
             <tbody>
                 <tr>
@@ -912,7 +888,8 @@ END CONFIG STYLES
                                                                                         class="esd-block-text es-p10t es-p10b es-p40r es-p40l es-m-p0r es-m-p0l">
                                                                                         <p style="font-size: 16px;">
                                                                                             Xin chào,
-                                                                                            <b>{{ $user_name }}</b>! Cảm
+                                                                                            <b>{{ $user_name }}</b>!
+                                                                                            Cảm
                                                                                             ơn
                                                                                             vì đã tham gia cùng chúng
                                                                                             tôi! Bây giờ bạn có tên
@@ -1005,7 +982,8 @@ END CONFIG STYLES
                                                                                 <tr>
                                                                                     <td align="left"
                                                                                         class="esd-block-text">
-                                                                                        <p>Đối với tất cả các đơn hàng tại
+                                                                                        <p>Đối với tất cả các đơn hàng
+                                                                                            tại
                                                                                             Hà Nội. Chúng tôi giao hàng
                                                                                             24/7. Giao hàng không tiếp
                                                                                             xúc cũng có thể. Giữ an toàn
@@ -1052,7 +1030,6 @@ END CONFIG STYLES
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <!--[if mso]></td><td dir="ltr" width="30"></td><td dir="ltr" width="90" valign="top"><![endif]-->
                                                         <table cellpadding="0" cellspacing="0" class="es-left"
                                                             align="left">
                                                             <tbody>
@@ -1145,7 +1122,8 @@ END CONFIG STYLES
                                                                                         <p>Chúng tôi quan tâm đến danh
                                                                                             tiếng của mình và quan trọng
                                                                                             nhất là sự thoải mái của
-                                                                                            khách hàng.<br>Với chúng tôi, “Những gì bạn thấy
+                                                                                            khách hàng.<br>Với chúng
+                                                                                            tôi, “Những gì bạn thấy
                                                                                             là những gì bạn nhận được”.
                                                                                         </p>
                                                                                     </td>
@@ -1159,7 +1137,7 @@ END CONFIG STYLES
                                                         <!--[if mso]></td></tr></table></table><![endif]-->
                                                     </td>
                                                 </tr>
-                                               
+
                                             </tbody>
                                         </table>
                                     </td>

@@ -24,10 +24,18 @@
         <div class="container">
             <form method="POST" action="{{ route('client.checkout.confirm') }}" class="row">
                 @csrf
-                @foreach ($data['id_dish_check_out'] as $id_dish_check_out)
-                    <input type="hidden" name="id_dish_check_out[]" value="{{ $id_dish_check_out }}">
-                @endforeach
+
+                @if ($data['tong_so_luong'] >= 2)
+                    @foreach ($data['id_dish_check_out'] as $id_dish_check_out)
+                        <input type="hidden" name="id_dish_check_out[]" value="{{ $id_dish_check_out }}">
+                        @endforeach
+                        @else
+                        <input type="hidden" name="id_dish_check_out" value="{{ $data['id_dish_check_out'] }}">
+                @endif
+
                 <input type="hidden" name="quantity" value="{{ $quantity }}">
+                <input type="hidden" name="total" value="{{ $data['total'] }}">
+
                 <div class="col-xl-8 col-lg-7 wow fadeInUp" data-wow-duration="1s">
                     <div class="checkout_form">
                         <div class="check_form">
@@ -144,7 +152,7 @@
                                 -webkit-transition: all linear .3s; 
                                 -moz-transition: all linear .3s;
                                 -ms-transition: all linear .3s;
-                                -o-transition: all linear .3s;">checkout
+                                -o-transition: all linear .3s;" name="redirect">checkout
                             </button>
                         </div>
                     </div>

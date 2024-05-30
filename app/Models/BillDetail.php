@@ -14,7 +14,9 @@ class BillDetail extends Model
 
     protected $fillable = [
         "ma_don_hang",
+        "id_khach_hang",
         "id_mon_an",
-        "so_luong_mua"
+        "so_luong_mua",
+        "tong_tien",
     ];
 }

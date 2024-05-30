@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('language/{language}', [LanguageController::class, "index"])->name('language');
 
 Route::get("/", [HomeController::class, "index"])->name("client.home");
+Route::get("thanks", [PaymentController::class, "thanks"])->name("client.thanks");
 
 // Admin route
 Route::prefix("admin")->middleware('admin')->group(function () {
@@ -95,7 +96,7 @@ Route::prefix("client")->group(function () {
     // rating
     Route::post("dish/star", [RatingController::class, "store"])->name("client.dish.rating");
     //payment
-    Route::post("payment", [PaymentController::class, "vnpay_payment"])->name("client.payment");
-    Route::get("checkout", [PaymentController::class, "checkout"])->name("client.cart.checkout");
+    Route::match(['get', 'post'], "payment", [PaymentController::class, "vnpay_payment"])->name("client.payment");
+    Route::match(['get', 'post'], "checkout", [PaymentController::class, "checkout"])->name("client.cart.checkout");
     Route::post("checkout/confirm", [PaymentController::class, "checkout_confirm"])->name("client.checkout.confirm");
 });

@@ -135,7 +135,20 @@
                                             <input type="hidden" name="id_dish_check_out[]"
                                                 value="{{ $cart->id_mon_an }}">
                                         @endforeach
+
+                                        @if ($tong_so_luong >= 2)
+                                            @foreach ($carts as $cart)
+                                                <input type="hidden" name="id_dish_check_out[]"
+                                                    value="{{ $cart->id_mon_an }}">
+                                            @endforeach
+                                        @else
+                                            <input type="hidden" name="id_dish_check_out"
+                                                value="{{ $cart->id_mon_an }}">
+                                        @endif
+
                                         <input type="hidden" name="total" value="{{ $total_cart }}">
+                                        <input type="hidden" name="tong_so_luong" value="{{ $tong_so_luong }}">
+
                                         <h6>total cart</h6>
                                         <p class="subtotal">subtotal:
                                             <span>
