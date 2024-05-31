@@ -86,15 +86,17 @@
                             {{ number_format($dish_detail->gia_mon_an, 0, ',', '.') }} đ
                         </h3>
                         <p class="rating">
-                            @for ($i = 0; $i < 5; $i++)
-                                @if ($i < $get_rate->so_sao)
-                                    <i style="color: #ff9933" class="fas fa-star" data-rating="1"
-                                        data-dish-id="{{ $dish_detail->id }}"></i>
-                                @else
-                                    <i style="color: #231f40" class="fas fa-star" data-rating="1"
-                                        data-dish-id="{{ $dish_detail->id }}"></i>
-                                @endif
-                            @endfor
+                            @if (isset($get_rate->so_sao))
+                                @for ($i = 0; $i < 5; $i++)
+                                    @if ($i < $get_rate->so_sao)
+                                        <i style="color: #ff9933" class="fas fa-star" data-rating="1"
+                                            data-dish-id="{{ $dish_detail->id }}"></i>
+                                    @else
+                                        <i style="color: #231f40" class="fas fa-star" data-rating="1"
+                                            data-dish-id="{{ $dish_detail->id }}"></i>
+                                    @endif
+                                @endfor
+                            @endif
                             <span>(201)</span>
                         </p>
                         <p class="short_description">
@@ -113,8 +115,7 @@
                             </li>
 
                             <li>
-                                <a href="#" class="common_btn add-to-favorite"
-                                    data-dish-id="{{ $dish_detail->id }}">
+                                <a href="#" class="common_btn add-to-favorite" data-dish-id="{{ $dish_detail->id }}">
                                     wishlist
                                 </a>
                             </li>
