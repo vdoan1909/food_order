@@ -35,14 +35,6 @@
                         </div>
                         <div class="cart_popup_text">
                             <a href="#" class="title"></a>
-                            <p class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="far fa-star"></i>
-                                <span>(201)</span>
-                            </p>
                             <h4 class="price"> </h4>
                             <div class="details_quentity">
                                 <h5>select quentity</h5>
@@ -124,12 +116,27 @@
                                 </a>
 
                                 <p class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <i class="far fa-star"></i>
-                                    <span>24</span>
+                                    @if ($dish->average_rating)
+                                        @php
+                                            $rounded_rating = round($dish->average_rating * 2) / 2;
+                                        @endphp
+                                
+                                        @for ($i = 0; $i < 5; $i++)
+                                            @if ($i < floor($rounded_rating))
+                                                <!-- Full star -->
+                                                <i class="fas fa-star"></i>
+                                            @elseif ($i < $rounded_rating)
+                                                <!-- Half star -->
+                                                <i class="fas fa-star-half-alt"></i>
+                                            @else
+                                                <!-- Empty star -->
+                                                <i class="far fa-star"></i>
+                                            @endif
+                                        @endfor
+                                    @else 
+                                        <span>Không có đánh giá</span>
+                                    @endif
+                                    <span>{{ $dish->reviewers_count }}</span>
                                 </p>
                                 <h5 class="price">
                                     {{ number_format($dish->gia_mon_an, 0, ',', '.') }} đ

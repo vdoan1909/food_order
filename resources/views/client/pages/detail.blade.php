@@ -35,14 +35,7 @@
                         </div>
                         <div class="cart_popup_text">
                             <a href="#" class="title"></a>
-                            <p class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="far fa-star"></i>
-                                <span>(201)</span>
-                            </p>
+                           
                             <h4 class="price"> </h4>
                             <div class="details_quentity">
                                 <h5>select quentity</h5>
@@ -85,20 +78,27 @@
                         <h3 class="price">
                             {{ number_format($dish_detail->gia_mon_an, 0, ',', '.') }} đ
                         </h3>
+
                         <p class="rating">
-                            @if (isset($get_rate->so_sao))
+                            @if (isset($average_rating))
                                 @for ($i = 0; $i < 5; $i++)
-                                    @if ($i < $get_rate->so_sao)
+                                    @if ($i < floor($average_rating))
                                         <i style="color: #ff9933" class="fas fa-star" data-rating="1"
+                                            data-dish-id="{{ $dish_detail->id }}"></i>
+                                    @elseif ($i < $average_rating)
+                                        <i style="color: #ff9933" class="fas fa-star-half-alt" data-rating="1"
                                             data-dish-id="{{ $dish_detail->id }}"></i>
                                     @else
                                         <i style="color: #231f40" class="fas fa-star" data-rating="1"
                                             data-dish-id="{{ $dish_detail->id }}"></i>
                                     @endif
                                 @endfor
+                                <span>({{ $reviewers_count }})</span>
+                            @else
+                                <strong>Không có đánh giá</strong>
                             @endif
-                            <span>(201)</span>
                         </p>
+
                         <p class="short_description">
                             {{ $dish_detail->mo_ta }}
                         </p>

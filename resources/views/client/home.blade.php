@@ -77,14 +77,7 @@
                         </div>
                         <div class="cart_popup_text">
                             <a href="#" class="title"></a>
-                            <p class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="far fa-star"></i>
-                                <span>(201)</span>
-                            </p>
+                            
                             <h4 class="price"> </h4>
                             <div class="details_quentity">
                                 <h5>select quentity</h5>
@@ -116,18 +109,6 @@
                         <h2>Popular Delicious Foods</h2>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 wow fadeInUp" data-wow-duration="1s">
-                    <div class="menu_filter d-flex flex-wrap">
-                        <a class="{{ request('category') === null ? 'active' : '' }}" href="{{ route('client.home') }}">all
-                            menu</a>
-                        @foreach ($categorys as $category)
-                            <a class="{{ request('category') == $category->id ? 'active' : '' }}"
-                                href="{{ route('client.home', ['category' => $category->id]) }}">
-                                {{ $category->ten_danh_muc }}
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
             </div>
 
             <div class="row grid">
@@ -151,13 +132,30 @@
                                     title="{{ $dish_popular->ten_mon_an }}">
                                     {{ Str::limit($dish_popular->ten_mon_an, 20, '...') }}
                                 </a>
+
                                 <p class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <i class="far fa-star"></i>
-                                    <span>24</span>
+                                    @if ($dish_popular->average_rating)
+                                        @php
+                                            $rounded_rating = round($dish_popular->average_rating * 2) / 2;
+                                        @endphp
+
+                                        @for ($i = 0; $i < 5; $i++)
+                                            @if ($i < floor($rounded_rating))
+                                                <!-- Full star -->
+                                                <i class="fas fa-star"></i>
+                                            @elseif ($i < $rounded_rating)
+                                                <!-- Half star -->
+                                                <i class="fas fa-star-half-alt"></i>
+                                            @else
+                                                <!-- Empty star -->
+                                                <i class="far fa-star"></i>
+                                            @endif
+                                        @endfor
+
+                                        @else 
+                                        <span>Không có đánh giá</span>
+                                    @endif
+                                    <span>{{ $dish_popular->reviewers_count }}</span>
                                 </p>
                                 <h5 class="price">
                                     {{ number_format($dish_popular->gia_mon_an, 0, ',', '.') }} đ
@@ -176,7 +174,6 @@
                                             <i class="fal fa-heart"></i>
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="{{ route('client.detail', ['id' => $dish_popular->id]) }}">
                                             <i class="far fa-eye"></i>
@@ -188,6 +185,7 @@
                     </div>
                 @endforeach
             </div>
+
         </div>
     </section>
 

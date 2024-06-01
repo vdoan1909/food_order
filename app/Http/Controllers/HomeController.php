@@ -3,51 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Dish;
 use App\Models\Rating;
-use App\Models\SideDish;
 use Illuminate\Http\Request;
-use User;
 
 class HomeController extends Controller
 {
     public function index(Request $request)
     {
         $categorys = Category::all();
+        $dish_populars = Dish::orderBy('luot_xem', 'desc')->take(8)->get();
 
-        if ($request->has('category')) {
-            $category_id = $request->input('category');
-            $dish_populars = Dish::where('id_the_loai', $category_id)->orderBy('luot_xem', 'desc')->take(8)->get();
-        } else {
-            $dish_populars = Dish::orderBy('luot_xem', 'desc')->take(8)->get();
+        foreach ($dish_populars as $dish) {
+            $dish->average_rating = Rating::where('id_mon_an', $dish->id)->avg('so_sao');
+            $dish->reviewers_count = Rating::where('id_mon_an', $dish->id)->count('id_khach_hang');
         }
-
         return view("client.home", compact("categorys", "dish_populars"));
     }
 
     public function detail(Request $request, $id)
     {
         $dish_detail = Dish::find($id);
-        if ($request->session()->has('customer') || $request->session()->has('admin')) {
-            $id_user = null;
 
-            if ($request->session()->has('customer')) {
-                $id_user = session()->get('customer')->id;
-            } elseif ($request->session()->has('admin')) {
-                $id_user = session()->get('admin')->id;
-            }
+        $average_rating = Rating::where('id_mon_an', $id)->avg('so_sao');
+        $reviewers_count = Rating::where('id_mon_an', $id)->count('id_khach_hang');
 
-            $get_rate = Rating::where('id_mon_an', $id)->where('id_khach_hang', $id_user)->first();
 
-            if ($dish_detail) {
-                $dish_detail->luot_xem += 1;
-                $dish_detail->save();
-                return view("client.pages.detail", compact("dish_detail", "get_rate"));
-            } else {
-                return view("404");
-            }
+        if ($dish_detail) {
+            $dish_detail->luot_xem += 1;
+            $dish_detail->save();
+            return view("client.pages.detail", compact("dish_detail", "average_rating", "reviewers_count"));
+        } else {
+            return view("404");
         }
     }
 
@@ -75,42 +63,19 @@ class HomeController extends Controller
                 break;
             default:
                 $list_menu = $query->paginate(12);
+                foreach ($list_menu as $dish) {
+                    $dish->average_rating = Rating::where('id_mon_an', $dish->id)->avg('so_sao');
+                }
                 $menu_ctg = Category::all();
                 break;
         }
 
         $list_menu = $query->paginate(12);
+        foreach ($list_menu as $dish) {
+            $dish->average_rating = Rating::where('id_mon_an', $dish->id)->avg('so_sao');
+            $dish->reviewers_count = Rating::where('id_mon_an', $dish->id)->count('id_khach_hang');
+        }
         $menu_ctg = Category::all();
         return view("client.pages.menu", compact("list_menu", "menu_ctg"));
-    }
-
-    public function submenu(Request $request)
-    {
-        $query = SideDish::query();
-
-        if ($request->has('search') && $request->search != "") {
-            $query->where('ten_mon_phu', 'like', '%' . $request->search . '%');
-        }
-
-        switch ($request->sort_by) {
-            case 'default':
-                $list_side_menu = $query->paginate(12);
-                break;
-            case 'newest':
-                $query->orderBy('ngay_them', 'desc');
-                break;
-            case 'low':
-                $query->orderBy('gia_mon_phu', 'asc');
-                break;
-            case 'high':
-                $query->orderBy('gia_mon_phu', 'desc');
-                break;
-            default:
-                $list_side_menu = $query->paginate(12);
-                break;
-        }
-
-        $list_side_menu = $query->paginate(12);
-        return view("client.pages.submenu", compact("list_side_menu"));
     }
 }

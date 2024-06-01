@@ -109,7 +109,7 @@ class PaymentController extends Controller
 
         if ($request->session()->has('customer') || $request->session()->has('admin')) {
             $id = null;
-            $welcome = "Xin chào khách hàng !";
+            $welcome = "Thông tin đơn hàng !";
             $user_name = session('customer')->ho_ten;
             $user_email = session('customer')->email;
 
@@ -236,7 +236,7 @@ class PaymentController extends Controller
         $pay_data = session('pay_data');
 
         $data = $request->all();
-        $welcome = "Xin chào khách hàng !";
+        $welcome = "Thông tin đơn hàng !";
         $user_name = session('customer')->ho_ten;
         $user_email = session('customer')->email;
 

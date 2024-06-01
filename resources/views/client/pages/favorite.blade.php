@@ -21,6 +21,7 @@
 @endsection
 
 @section('content')
+
     <section class="dashboard mt_100 xs_mt_70 mb_100 xs_mb_70">
         <div class="container">
             <div class="dashboard_area">
@@ -58,22 +59,10 @@
                                                                 {{ Str::limit($favorite->ten_mon_an, 20, '...') }}
                                                             </a>
 
-                                                            <p class="rating">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star-half-alt"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <span>24</span>
-                                                            </p>
-
                                                             <h5 class="price">
                                                                 {{ number_format($favorite->gia_mon_an, 0, ',', '.') }} đ
                                                             </h5>
 
-                                                            <a class="add_to_cart" href="#" data-bs-toggle="modal"
-                                                                data-bs-target="#cartModal">add
-                                                                to cart</a>
                                                             <ul class="d-flex flex-wrap justify-content-end">
                                                                 <li>
                                                                     <a href="#" class="rm-to-favorite"

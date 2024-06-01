@@ -35,12 +35,6 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item " href="{{ route('admin.sidedish') }}">
-                <i class='app-menu__icon bx bx-dish'></i>
-                <span class="app-menu__label">@lang('sideDishManagement')</span>
-            </a>
-        </li>
-        <li>
             <a class="app-menu__item " href="{{ route('admin.news') }}">
                 <i class='app-menu__icon bx bx-news'></i>
                 <span class="app-menu__label">@lang('newsManagement')</span>

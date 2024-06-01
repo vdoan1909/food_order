@@ -72,12 +72,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('client.menu', 'client.submenu') ? 'active' : '' }}"
-                            href="#">menu</a>
-                        <ul class="droap_menu">
-                            <li><a href="{{ route('client.menu') }}">món ăn</a></li>
-                            <li><a href="{{ route('client.submenu') }}">món ăn thêm</a></li>
-                        </ul>
+                        <a class="nav-link {{ Request::routeIs('client.menu') ? 'active' : '' }}"
+                            href="{{ route('client.menu') }}">menu</a>
                     </li>
                 </ul>
 
