@@ -26,32 +26,17 @@
                     <div class="footer_content">
                         <h3>Short Link</h3>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Our Service</a></li>
-                            <li><a href="#">gallery</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xxl-2 col-lg-2 col-sm-6 col-md-5 order-md-4">
-                    <div class="footer_content">
-                        <h3>Help Link</h3>
-                        <ul>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Refund Policy</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">contact</a></li>
+                            <li><a href="#">Trang chủ</a></li>
+                            <li><a href="#">Thực đơn</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xxl-3 col-lg-4 col-sm-9 col-md-7 order-lg-4">
                     <div class="footer_content">
-                        <h3>contact us</h3>
-                        <p class="info"><i class="fas fa-phone-alt"></i> +44 (0) 20 9994 7740</p>
-                        <p class="info"><i class="fas fa-envelope"></i> themefaxbd@gmail.com</p>
-                        <p class="info"><i class="far fa-map-marker-alt"></i> Blackwell Street,Dry Creek,Alaska</p>
+                        <h3>liên hệ với chúng tôi</h3>
+                        <p class="info"><i class="fas fa-phone-alt"></i> 0924 794 577</p>
+                        <p class="info"><i class="fas fa-envelope"></i> openaivdoan@gmail.com</p>
+                        <p class="info"><i class="far fa-map-marker-alt"></i> Cao Đẳng FPT Polytechnic</p>
                     </div>
                 </div>
             </div>
@@ -62,7 +47,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="footer_bottom_text">
-                        <p>Copyright ©<b> RegFood</b> 2023. All Rights Reserved</p>
+                        <p>Copyright ©<b> VĐoàn</b> 2024. Đã đăng ký Bản quyền</p>
                     </div>
                 </div>
             </div>

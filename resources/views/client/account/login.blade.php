@@ -1,7 +1,7 @@
 @extends('layout.client.index')
 
 @section('title')
-    Đăng ký
+    Đăng nhập
 @endsection
 
 @section('banner')
@@ -9,10 +9,10 @@
         <div class="breadcrumb_overlay">
             <div class="container">
                 <div class="breadcrumb_text">
-                    <h1>sign up</h1>
+                    <h1>đăng nhập</h1>
                     <ul>
-                        <li><a href="{{ route('client.home') }}">home</a></li>
-                        <li><a href="#">sign up</a></li>
+                        <li><a href="{{ route('client.home') }}">trang chủ</a></li>
+                        <li><a href="#">đăng nhập</a></li>
                     </ul>
                 </div>
             </div>

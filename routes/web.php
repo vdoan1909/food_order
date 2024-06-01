@@ -73,7 +73,7 @@ Route::prefix("client")->group(function () {
     Route::post("favorite/add", [FavoriteController::class, "store"])->name("client.favorite.store");
     Route::post("favorite/remove", [FavoriteController::class, "delete"])->name("client.favorite.remove");
     Route::get("menu", [HomeController::class, "menu"])->name("client.menu");
-    Route::get("sub/menu", [HomeController::class, "submenu"])->name("client.submenu");
+    Route::get("news/detail/{id}", [HomeController::class, "newsdetail"])->name("client.news.detail");
     Route::get("detail/{id}", [HomeController::class, "detail"])->name("client.detail");
     // account
     Route::get("register", [AccountController::class, "add"])->name("client.register.add");

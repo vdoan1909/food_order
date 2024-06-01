@@ -9,10 +9,10 @@
         <div class="breadcrumb_overlay">
             <div class="container">
                 <div class="breadcrumb_text">
-                    <h1>menu Details</h1>
+                    <h1>yêu thích</h1>
                     <ul>
-                        <li><a href="{{ route('client.home') }}">home</a></li>
-                        <li><a href="#">menu Details</a></li>
+                        <li><a href="{{ route('client.home') }}">trang chủ</a></li>
+                        <li><a href="#">yêu thích</a></li>
                     </ul>
                 </div>
             </div>
@@ -21,7 +21,6 @@
 @endsection
 
 @section('content')
-
     <section class="dashboard mt_100 xs_mt_70 mb_100 xs_mb_70">
         <div class="container">
             <div class="dashboard_area">
@@ -32,7 +31,7 @@
                         <div class="dashboard_content">
                             <div class="dashboard_body">
                                 @if (!$list_favorite->isEmpty())
-                                    <h3>wishlist</h3>
+                                    <h3>yêu thích</h3>
                                 @endif
                                 <div class="dashoard_wishlist">
                                     <div class="row">
@@ -58,6 +57,30 @@
                                                                 title="{{ $favorite->ten_mon_an }}">
                                                                 {{ Str::limit($favorite->ten_mon_an, 20, '...') }}
                                                             </a>
+
+                                                            <p class="rating">
+                                                                @if ($favorite->average_rating)
+                                                                    @php
+                                                                        $rounded_rating = round($favorite->average_rating * 2) / 2;
+                                                                    @endphp
+                            
+                                                                    @for ($i = 0; $i < 5; $i++)
+                                                                        @if ($i < floor($rounded_rating))
+                                                                            <!-- Full star -->
+                                                                            <i class="fas fa-star"></i>
+                                                                        @elseif ($i < $rounded_rating)
+                                                                            <!-- Half star -->
+                                                                            <i class="fas fa-star-half-alt"></i>
+                                                                        @else
+                                                                            <!-- Empty star -->
+                                                                            <i class="far fa-star"></i>
+                                                                        @endif
+                                                                    @endfor
+                                                                @else
+                                                                    <span>Không có đánh giá</span>
+                                                                @endif
+                                                                <span>{{ $favorite->reviewers_count }}</span>
+                                                            </p>
 
                                                             <h5 class="price">
                                                                 {{ number_format($favorite->gia_mon_an, 0, ',', '.') }} đ

@@ -9,10 +9,10 @@
         <div class="breadcrumb_overlay">
             <div class="container">
                 <div class="breadcrumb_text">
-                    <h1>forgot password</h1>
+                    <h1>quên mật khẩu</h1>
                     <ul>
-                        <li><a href="{{ route('client.home') }}">home</a></li>
-                        <li><a href="#">forgot password</a></li>
+                        <li><a href="{{ route('client.home') }}">trang chủ</a></li>
+                        <li><a href="#">quên mật khẩu</a></li>
                     </ul>
                 </div>
             </div>
@@ -26,8 +26,8 @@
             <div class="row justify-content-center wow fadeInUp" data-wow-duration="1s">
                 <div class="col-xl-5 col-sm-10 col-md-8 col-lg-6">
                     <div class="login_area">
-                        <h2>Welcome back!</h2>
-                        <p>forgot password</p>
+                        <h2>Chào mừng trở lại!</h2>
+                        <p>quên mật khẩu</p>
                         <form action="{{ route('client.forgot.store') }}" method="POST" novalidate>
                             @csrf
                             <div class="row">
@@ -41,14 +41,14 @@
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="login_imput">
-                                        <button type="submit" class="common_btn">verify mail</button>
+                                        <button type="submit" class="common_btn">xác minh thư</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
                         <p class="create_account d-flex justify-content-between">
-                            <a href="{{ route('client.login.add') }}">login</a>
-                            <a href="{{ route('client.register.add') }}">Create Account</a>
+                            <a href="{{ route('client.login.add') }}">đăng nhập</a>
+                            <a href="{{ route('client.register.add') }}">Tạo tải khoản mới</a>
                         </p>
                     </div>
                 </div>

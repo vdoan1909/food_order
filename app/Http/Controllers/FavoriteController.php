@@ -32,6 +32,11 @@ class FavoriteController extends Controller
                 ->join('mon_an', 'mon_an_yeu_thich.id_mon_an', '=', 'mon_an.id')
                 ->select('mon_an_yeu_thich.id', 'mon_an.id as id_mon_an', 'mon_an.anh_mon_an', 'mon_an.ten_mon_an', 'mon_an.gia_mon_an', 'mon_an.mo_ta', 'mon_an.id_the_loai')
                 ->paginate(6);
+
+            foreach ($list_favorite as $dish) {
+                $dish->average_rating = Rating::where('id_mon_an', $dish->id)->avg('so_sao');
+                $dish->reviewers_count = Rating::where('id_mon_an', $dish->id)->count('id_khach_hang');
+            }
         } else {
             return redirect()->route("client.login.add");
         }

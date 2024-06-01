@@ -9,10 +9,10 @@
         <div class="breadcrumb_overlay">
             <div class="container">
                 <div class="breadcrumb_text">
-                    <h1>user dashboard</h1>
+                    <h1>thực đơn</h1>
                     <ul>
                         <li><a href="{{ route('client.home') }}">home</a></li>
-                        <li><a href="#">dashboard</a></li>
+                        <li><a href="#">thực đơn</a></li>
                     </ul>
                 </div>
             </div>
@@ -21,6 +21,7 @@
 @endsection
 
 @section('content')
+{{-- @dd($list_menu) --}}
     <!-- CART POPUT START -->
     <div class="cart_popup">
         <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
@@ -37,7 +38,7 @@
                             <a href="#" class="title"></a>
                             <h4 class="price"> </h4>
                             <div class="details_quentity">
-                                <h5>select quentity</h5>
+                                <h5>chọn số lượng</h5>
                                 <div class="quentity_btn_area d-flex flex-wrapa align-items-center">
                                     <div class="quentity_btn">
                                         <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
@@ -48,7 +49,7 @@
                                 </div>
                             </div>
                             <ul class="details_button_area d-flex flex-wrap">
-                                <li><a class="common_btn" href="#">add to cart</a></li>
+                                <li><a class="common_btn" href="#">thêm giỏ hàng</a></li>
                             </ul>
                         </div>
                     </div>
@@ -64,7 +65,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-5">
                         <div class="menu_search">
-                            <input type="text" name="search" placeholder="tên món ăn..."
+                            <input type="text" name="search" placeholder="Tên món ăn..."
                                 value="{{ request()->input('search') ? request()->input('search') : '' }}">
                         </div>
                     </div>
@@ -73,20 +74,20 @@
                             <div class="select_area">
                                 <select class="select_js" name="sort_by" id="sort_by">
                                     <option value="default"
-                                        {{ request()->input('sort_by') == 'default' ? 'selected' : '' }}>mặc định</option>
+                                        {{ request()->input('sort_by') == 'default' ? 'selected' : '' }}>Mặc định</option>
                                     <option value="newest" {{ request()->input('sort_by') == 'newest' ? 'selected' : '' }}>
-                                        mới nhất</option>
-                                    <option value="low" {{ request()->input('sort_by') == 'low' ? 'selected' : '' }}>từ
+                                        Mới nhất</option>
+                                    <option value="low" {{ request()->input('sort_by') == 'low' ? 'selected' : '' }}>Từ
                                         thấp tới cao</option>
                                     <option value="high" {{ request()->input('sort_by') == 'high' ? 'selected' : '' }}>
-                                        từ cao tới thấp</option>
+                                        Từ cao tới thấp</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <div class="menu_search">
-                            <button class="common_btn" type="submit">Search</button>
+                            <button class="common_btn" type="submit">tìm kiếm</button>
                         </div>
                     </div>
                 </div>
@@ -146,7 +147,7 @@
                                     data-dish-name="{{ $dish->ten_mon_an }}"
                                     data-dish-img="{{ asset('storage/' . $dish->anh_mon_an) }}"
                                     data-dish-price="{{ $dish->gia_mon_an }}">
-                                    add to cart
+                                    thêm giỏ hàng
                                 </a>
                                 <ul class="d-flex flex-wrap justify-content-end">
                                     <li>

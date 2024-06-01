@@ -9,10 +9,10 @@
         <div class="breadcrumb_overlay">
             <div class="container">
                 <div class="breadcrumb_text">
-                    <h1>menu Details</h1>
+                    <h1>thực đơn chi tiết</h1>
                     <ul>
-                        <li><a href="{{ route('client.home') }}">home</a></li>
-                        <li><a href="#">menu Details</a></li>
+                        <li><a href="{{ route('client.home') }}">trang chủ</a></li>
+                        <li><a href="#">thực đơn chi tiết</a></li>
                     </ul>
                 </div>
             </div>
@@ -35,10 +35,10 @@
                         </div>
                         <div class="cart_popup_text">
                             <a href="#" class="title"></a>
-                           
+
                             <h4 class="price"> </h4>
                             <div class="details_quentity">
-                                <h5>select quentity</h5>
+                                <h5>chọn số lượng</h5>
                                 <div class="quentity_btn_area d-flex flex-wrapa align-items-center">
                                     <div class="quentity_btn">
                                         <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <ul class="details_button_area d-flex flex-wrap">
-                                <li><a class="common_btn" href="#">add to cart</a></li>
+                                <li><a class="common_btn" href="#">thêm giỏ hàng</a></li>
                             </ul>
                         </div>
                     </div>
@@ -110,13 +110,13 @@
                                     data-dish-name="{{ $dish_detail->ten_mon_an }}"
                                     data-dish-img="{{ asset('storage/' . $dish_detail->anh_mon_an) }}"
                                     data-dish-price="{{ $dish_detail->gia_mon_an }}">
-                                    add to cart
+                                    thêm giỏ hàng
                                 </a>
                             </li>
 
                             <li>
                                 <a href="#" class="common_btn add-to-favorite" data-dish-id="{{ $dish_detail->id }}">
-                                    wishlist
+                                    yêu thích
                                 </a>
                             </li>
                         </ul>
@@ -131,7 +131,7 @@
                                     aria-controls="pills-contact" aria-selected="false">Đánh giá</button>
                             </li>
                         </ul>
-                        <div class="tab-content" id="pills-tabContent">
+                        {{-- <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                 aria-labelledby="pills-contact-tab" tabindex="0">
                                 <div class="review_area">
@@ -214,149 +214,78 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
 
             <div class="related_menu mt_90 xs_mt_60">
-                <h2>related item</h2>
+                <h2>món ăn liên quan</h2>
                 <div class="row related_product_slider">
-                    <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
-                        <div class="menu_item">
-                            <div class="menu_item_img">
-                                <img src="images/menu2_img_1.jpg" alt="menu" class="img-fluid w-100">
-                            </div>
-                            <div class="menu_item_text">
-                                <a class="category" href="#">Biryani</a>
-                                <a class="title" href="menu_details.html">Hyderabadi biryani</a>
-                                <p class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <i class="far fa-star"></i>
-                                    <span>24</span>
-                                </p>
-                                <h5 class="price">$65.00 <del>$90.00</del></h5>
-                                <a class="add_to_cart" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#cartModal">add
-                                    to cart</a>
-                                <ul class="d-flex flex-wrap justify-content-end">
-                                    <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                    <li><a href="menu_details.html"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
-                        <div class="menu_item">
-                            <div class="menu_item_img">
-                                <img src="images/menu2_img_2.jpg" alt="menu" class="img-fluid w-100">
-                            </div>
-                            <div class="menu_item_text">
-                                <a class="category" href="#">Chicken</a>
-                                <a class="title" href="menu_details.html">Daria Shevtsova</a>
-                                <p class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span>30</span>
-                                </p>
-                                <h5 class="price">$80.00</h5>
-                                <a class="add_to_cart" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#cartModal">add
-                                    to cart</a>
-                                <ul class="d-flex flex-wrap justify-content-end">
-                                    <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                    <li><a href="menu_details.html"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
-                        <div class="menu_item">
-                            <div class="menu_item_img">
-                                <img src="images/menu2_img_3.jpg" alt="menu" class="img-fluid w-100">
-                            </div>
-                            <div class="menu_item_text">
-                                <a class="category" href="#">burger</a>
-                                <a class="title" href="menu_details.html">Spicy Burger</a>
-                                <p class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span>17</span>
-                                </p>
-                                <h5 class="price">$100.00 <del>$110.00</del></h5>
-                                <a class="add_to_cart" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#cartModal">add
-                                    to cart</a>
-                                <ul class="d-flex flex-wrap justify-content-end">
-                                    <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                    <li><a href="menu_details.html"><i class="far fa-eye"></i></a></li>
-                                </ul>
+                    @foreach ($dish_related as $related)
+                        <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
+                            <div class="menu_item">
+                                <div class="menu_item_img">
+                                    <img src="{{ asset('storage/' . $related->anh_mon_an) }}" alt="menu"
+                                        class="img-fluid w-100">
+                                </div>
+                                <div class="menu_item_text">
+                                    @foreach ($categorys as $category)
+                                        @if ($related->id_the_loai == $category->id)
+                                            <a class="category" href="#">
+                                                {{ $category->ten_danh_muc }}
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                    <a class="title" href="{{ route('client.detail', ['id' => $related->id]) }}">
+                                        {{ Str::limit($related->ten_mon_an, 20, '...') }}
+
+                                    </a>
+                                    <p class="rating">
+                                        @if ($related->average_rating)
+                                            @php
+                                                $rounded_rating = round($related->average_rating * 2) / 2;
+                                            @endphp
+    
+                                            @for ($i = 0; $i < 5; $i++)
+                                                @if ($i < floor($rounded_rating))
+                                                    <!-- Full star -->
+                                                    <i class="fas fa-star"></i>
+                                                @elseif ($i < $rounded_rating)
+                                                    <!-- Half star -->
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                @else
+                                                    <!-- Empty star -->
+                                                    <i class="far fa-star"></i>
+                                                @endif
+                                            @endfor
+                                        @else
+                                            <span>Không có đánh giá</span>
+                                        @endif
+                                        <span>{{ $related->reviewers_count }}</span>
+                                    </p>
+                                    <h5 class="price">
+                                        {{ number_format($related->gia_mon_an, 0, ',', '.') }} đ
+                                    </h5>
+                                    <a class="add_to_cart" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#cartModal">thêm giỏ hàng</a>
+                                    <ul class="d-flex flex-wrap justify-content-end">
+                                        <li>
+                                            <a href="#" class="add-to-favorite"
+                                                data-dish-id="{{ $related->id }}">
+                                                <i class="fal fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('client.detail', ['id' => $related->id]) }}">
+                                                <i class="far fa-eye"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
-                        <div class="menu_item">
-                            <div class="menu_item_img">
-                                <img src="images/menu2_img_4.jpg" alt="menu" class="img-fluid w-100">
-                            </div>
-                            <div class="menu_item_text">
-                                <a class="category" href="#">dressert</a>
-                                <a class="title" href="menu_details.html">Fried Chicken</a>
-                                <p class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span>22</span>
-                                </p>
-                                <h5 class="price">$99.00</h5>
-                                <a class="add_to_cart" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#cartModal">add
-                                    to cart</a>
-                                <ul class="d-flex flex-wrap justify-content-end">
-                                    <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                    <li><a href="menu_details.html"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
-                        <div class="menu_item">
-                            <div class="menu_item_img">
-                                <img src="images/menu2_img_5.jpg" alt="menu" class="img-fluid w-100">
-                            </div>
-                            <div class="menu_item_text">
-                                <a class="category" href="#">kabab</a>
-                                <a class="title" href="menu_details.html">Mozzarella Sticks</a>
-                                <p class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span>72</span>
-                                </p>
-                                <h5 class="price">$75.00</h5>
-                                <a class="add_to_cart" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#cartModal">add
-                                    to cart</a>
-                                <ul class="d-flex flex-wrap justify-content-end">
-                                    <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                    <li><a href="menu_details.html"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

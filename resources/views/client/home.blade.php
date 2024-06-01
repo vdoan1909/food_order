@@ -32,14 +32,18 @@
                             <div class="row justify-content-center">
                                 <div class="col-xxl-6 col-xl-6 col-md-10 col-lg-6">
                                     <div class="banner_text wow fadeInLeft" data-wow-duration="1s">
-                                        <h3>Satisfy Your Cravings</h3>
-                                        <h1>Delicious Foods With Wonderful Eating</h1>
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum fugit
-                                            minimaet debitis ut distinctio optio.</p>
-                                        <form>
-                                            <input type="text" placeholder="Search . . .">
-                                            <button type="submit" class="common_btn">search</button>
-                                        </form>
+                                        <h3>
+                                            Thỏa mãn cơn thèm của bạn
+                                        </h3>
+                                        <h1>
+                                            Món ăn ngon với cách ăn uống tuyệt vời
+                                        </h1>
+                                        <p>
+                                            Chào mừng bạn đến với website đặt đồ ăn hàng đầu! Khám phá vô vàn món ăn ngon và
+                                            thưởng thức cách ăn uống tuyệt vời ngay tại nhà. Đặt hàng dễ dàng, giao hàng
+                                            nhanh chóng, và trải nghiệm dịch vụ đẳng cấp.
+                                        </p>
+
                                     </div>
                                 </div>
                                 <div class="col-xxl-5 col-xl-6 col-sm-10 col-md-9 col-lg-6">
@@ -48,7 +52,7 @@
                                             <img src="{{ asset('images/slider_img_1.png') }}" alt="food item"
                                                 class="img-fluid w-100">
                                             <span>
-                                                35% off
+                                                giảm 35%
                                             </span>
                                         </div>
                                     </div>
@@ -77,10 +81,10 @@
                         </div>
                         <div class="cart_popup_text">
                             <a href="#" class="title"></a>
-                            
+
                             <h4 class="price"> </h4>
                             <div class="details_quentity">
-                                <h5>select quentity</h5>
+                                <h5>Số lượng</h5>
                                 <div class="quentity_btn_area d-flex flex-wrapa align-items-center">
                                     <div class="quentity_btn">
                                         <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
@@ -91,7 +95,7 @@
                                 </div>
                             </div>
                             <ul class="details_button_area d-flex flex-wrap">
-                                <li><a class="common_btn" href="#">add to cart</a></li>
+                                <li><a class="common_btn" href="#">Thêm giỏ hàng</a></li>
                             </ul>
                         </div>
                     </div>
@@ -105,8 +109,8 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-6 wow fadeInUp" data-wow-duration="1s">
                     <div class="section_heading mb_25">
-                        <h4>food Menu</h4>
-                        <h2>Popular Delicious Foods</h2>
+                        <h4>Thực đơn</h4>
+                        <h2>Món ăn ngon phổ biến</h2>
                     </div>
                 </div>
             </div>
@@ -151,8 +155,7 @@
                                                 <i class="far fa-star"></i>
                                             @endif
                                         @endfor
-
-                                        @else 
+                                    @else
                                         <span>Không có đánh giá</span>
                                     @endif
                                     <span>{{ $dish_popular->reviewers_count }}</span>
@@ -189,7 +192,7 @@
         </div>
     </section>
 
-    <section class="team mt_100 xs_mt_70 pt_95 xs_pt_65 pb_95 xs_pb_65">
+    {{-- <section class="team mt_100 xs_mt_70 pt_95 xs_pt_65 pb_95 xs_pb_65">
         <div class="container">
             <div class="row wow fadeInUp" data-wow-duration="1s">
                 <div class="col-md-8 col-lg-7 col-xl-6">
@@ -288,9 +291,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <section class="download mt_100 xs_mt_70">
+    {{-- <section class="download mt_100 xs_mt_70">
         <div class="row">
             <div class="col-xl-4 col-lg-4">
                 <div class="download_text_bg" style="background: url('{{ asset('images/download_img.png') }}')">
@@ -357,9 +360,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <section class="counter_part" style="background: url('{{ asset('images/counter_bg.jpg') }}')">
+    {{-- <section class="counter_part" style="background: url('{{ asset('images/counter_bg.jpg') }}')">
         <div class="counter_overlay pt_120 xs_pt_90 pb_100 xs_pb_0">
             <div class="container">
                 <div class="row">
@@ -402,132 +405,52 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="blog pt_95 xs_pt_65 pb_65 xs_pb_35">
         <div class="container">
             <div class="row wow fadeInUp" data-wow-duration="1s">
                 <div class="col-md-8 col-lg-7 col-xl-6">
                     <div class="section_heading mb_25">
-                        <h4>news & blogs</h4>
-                        <h2>our latest foods blog</h2>
+                        <h4>
+                            Tin tức
+                        </h4>
+                        <h2>Tin tức món ăn mới nhất</h2>
                     </div>
                 </div>
             </div>
 
             <div class="row blog_slider">
-                <div class="col-xl-4 col-md-6 wow fadeInUp" data-wow-duration="1s">
-                    <div class="single_blog">
-                        <div class="single_blog_img">
-                            <img src="{{ asset('images/blog_1.jpg') }}" alt="author" class="img-fluid w-100">
-                        </div>
-                        <div class="single_blog_author">
-                            <div class="img">
-                                <img src="{{ asset('images/client_1.png') }}" alt="author" class="img-fluid w-100">
+                @foreach ($list_news as $news)
+                    <div class="col-xl-4 col-md-6 wow fadeInUp" data-wow-duration="1s">
+                        <div class="single_blog">
+                            <div class="single_blog_img">
+                                <img src="{{ asset('storage/' . $news->anh) }}" alt="author" class="img-fluid w-100">
                             </div>
-                            <div class="text">
-                                <h5>moni islam</h5>
-                                <p>14 May 2023</p>
+                            <div class="single_blog_author">
+                                <div class="text">
+                                    <p>{{ $news->ngay_dang }}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="single_blog_text">
-                            <a class="category" href="#">food</a>
-                            <a class="title" href="blog_details.html">Operates approximately 400 restaurants</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eos, odit beatae
-                                sequi
-                                tenetur quidem.</p>
-                            <div class="single_blog_footer">
-                                <a class="read_btn" href="blog_details.html">read more <i
-                                        class="far fa-long-arrow-right"></i></a>
-                                <span><i class="far fa-comments"></i> 120</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 wow fadeInUp" data-wow-duration="1s">
-                    <div class="single_blog">
-                        <div class="single_blog_img">
-                            <img src="{{ asset('images/blog_2.jpg') }}" alt="author" class="img-fluid w-100">
-                        </div>
-                        <div class="single_blog_author">
-                            <div class="img">
-                                <img src="{{ asset('images/client_2.png') }}" alt="author" class="img-fluid w-100">
-                            </div>
-                            <div class="text">
-                                <h5>john deo</h5>
-                                <p>30 Jan 2023</p>
-                            </div>
-                        </div>
-                        <div class="single_blog_text">
-                            <a class="category" href="#">restaurent</a>
-                            <a class="title" href="blog_details.html">Introducing Our New Summer Menu!</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eos, odit beatae
-                                sequi
-                                tenetur quidem.</p>
-                            <div class="single_blog_footer">
-                                <a class="read_btn" href="blog_details.html">read more <i
-                                        class="far fa-long-arrow-right"></i></a>
-                                <span><i class="far fa-comments"></i> 120</span>
+                            <div class="single_blog_text">
+                                <a class="category"
+                                    href="{{ route('client.news.detail', ['id' => $news->id]) }}">{{ $news->ten_danhmuc_tintuc }}</a>
+                                <a class="title" href="#" title="{{ $news->ten_tin_tuc }}">
+                                    {{ Str::limit($news->ten_tin_tuc, 25, '...') }}
+
+                                </a>
+                                <p>
+                                    {{ $news->mo_ta_tin_tuc }}
+                                </p>
+                                <div class="single_blog_footer">
+                                    <a class="read_btn" href="{{ route('client.news.detail', ['id' => $news->id]) }}">
+                                        xem thêm <i class="far fa-long-arrow-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-md-6 wow fadeInUp" data-wow-duration="1s">
-                    <div class="single_blog">
-                        <div class="single_blog_img">
-                            <img src="{{ asset('images/blog_3.jpg') }}" alt="author" class="img-fluid w-100">
-                        </div>
-                        <div class="single_blog_author">
-                            <div class="img">
-                                <img src="{{ asset('images/client_3.png') }}" alt="author" class="img-fluid w-100">
-                            </div>
-                            <div class="text">
-                                <h5>jakia taima</h5>
-                                <p>20 Apr 2023</p>
-                            </div>
-                        </div>
-                        <div class="single_blog_text">
-                            <a class="category" href="#">resort</a>
-                            <a class="title" href="blog_details.html">Summer Water Rosé + Bubbly Rosé is Here!</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eos, odit beatae
-                                sequi
-                                tenetur quidem.</p>
-                            <div class="single_blog_footer">
-                                <a class="read_btn" href="blog_details.html">read more <i
-                                        class="far fa-long-arrow-right"></i></a>
-                                <span><i class="far fa-comments"></i> 120</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 wow fadeInUp" data-wow-duration="1s">
-                    <div class="single_blog">
-                        <div class="single_blog_img">
-                            <img src="{{ asset('images/blog_4.jpg') }}" alt="author" class="img-fluid w-100">
-                        </div>
-                        <div class="single_blog_author">
-                            <div class="img">
-                                <img src="{{ asset('images/client_1.png') }}" alt="author" class="img-fluid w-100">
-                            </div>
-                            <div class="text">
-                                <h5>israt sultana</h5>
-                                <p>21 Mar 2023</p>
-                            </div>
-                        </div>
-                        <div class="single_blog_text">
-                            <a class="category" href="#">party</a>
-                            <a class="title" href="blog_details.html">Tender fried baby squid with a salt, pepper</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eos, odit beatae
-                                sequi
-                                tenetur quidem.</p>
-                            <div class="single_blog_footer">
-                                <a class="read_btn" href="blog_details.html">read more <i
-                                        class="far fa-long-arrow-right"></i></a>
-                                <span><i class="far fa-comments"></i> 120</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

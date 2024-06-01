@@ -9,10 +9,10 @@
         <div class="breadcrumb_overlay">
             <div class="container">
                 <div class="breadcrumb_text">
-                    <h1>user dashboard</h1>
+                    <h1>bảng điều khiển người dùng</h1>
                     <ul>
-                        <li><a href="{{ route('client.home') }}">home</a></li>
-                        <li><a href="#">dashboard</a></li>
+                        <li><a href="{{ route('client.home') }}">trang chủ</a></li>
+                        <li><a href="#">bảng điều khiển</a></li>
                     </ul>
                 </div>
             </div>
@@ -31,15 +31,15 @@
                         <div class="dashboard_content">
                             <div class="dashboard_body change_password">
                                 <div class="review_input">
-                                    <h3>change password</h3>
+                                    <h3>đổi mật khẩu</h3>
                                     <div class="comment_input pt-0 mb-0">
                                         <form action="{{ route('client.changepass.store') }}" method="POST">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-xl-6">
                                                     <div class="comment_imput_single">
-                                                        <label>New Password</label>
-                                                        <input type="password" placeholder="New Password" name="new_pass">
+                                                        <label>Mật khẩu mới</label>
+                                                        <input type="password" placeholder="Mật khẩu mới" name="new_pass">
                                                         @error('new_pass')
                                                             <span style="color: red">
                                                                 {{ $message }}
@@ -49,8 +49,8 @@
                                                 </div>
                                                 <div class="col-xl-6">
                                                     <div class="comment_imput_single">
-                                                        <label>confirm Password</label>
-                                                        <input type="password" placeholder="Confirm Password"
+                                                        <label>Xác nhận mật khẩu</label>
+                                                        <input type="password" placeholder="Xác nhận mật khẩu"
                                                             name="cf_pass">
                                                         @error('cf_pass')
                                                             <span style="color: red">
@@ -58,7 +58,7 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <button type="submit" class="common_btn mt_20">submit</button>
+                                                    <button type="submit" class="common_btn mt_20">Đổi</button>
                                                 </div>
                                             </div>
                                         </form>

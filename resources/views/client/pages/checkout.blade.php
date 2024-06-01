@@ -9,9 +9,9 @@
         <div class="breadcrumb_overlay">
             <div class="container">
                 <div class="breadcrumb_text">
-                    <h1>checkout</h1>
+                    <h1>thanh toán</h1>
                     <ul>
-                        <li><a href="#">checkout</a></li>
+                        <li><a href="#">thanh toán</a></li>
                     </ul>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                                 -webkit-transition: all linear .3s; 
                                 -moz-transition: all linear .3s;
                                 -ms-transition: all linear .3s;
-                                -o-transition: all linear .3s;" name="redirect">checkout
+                                -o-transition: all linear .3s;" name="redirect">thanh toán
                             </button>
                         </div>
                     </div>

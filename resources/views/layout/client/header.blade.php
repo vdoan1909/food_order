@@ -68,12 +68,12 @@
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item">
                         <a class="nav-link {{ Request::routeIs('client.home') ? 'active' : '' }}" aria-current="page"
-                            href="{{ route('client.home') }}">Home</a>
+                            href="{{ route('client.home') }}">Trang chủ</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link {{ Request::routeIs('client.menu') ? 'active' : '' }}"
-                            href="{{ route('client.menu') }}">menu</a>
+                            href="{{ route('client.menu') }}">Thực đơn</a>
                     </li>
                 </ul>
 

@@ -187,7 +187,7 @@
                                             -moz-transition: all linear .3s;
                                             -ms-transition: all linear .3s;
                                             -o-transition: all linear .3s;"
-                                            type="submit" name="redirect">checkout</button>
+                                            type="submit" name="redirect">thanh toán</button>
                                     </form>
                                 </div>
                             </div>

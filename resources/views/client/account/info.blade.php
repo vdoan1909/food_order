@@ -9,10 +9,10 @@
         <div class="breadcrumb_overlay">
             <div class="container">
                 <div class="breadcrumb_text">
-                    <h1>user dashboard</h1>
+                    <h1>bảng điều khiển người dùng</h1>
                     <ul>
-                        <li><a href="{{ route('client.home') }}">home</a></li>
-                        <li><a href="#">dashboard</a></li>
+                        <li><a href="{{ route('client.home') }}">trang chủ</a></li>
+                        <li><a href="#">bảng điều khiển</a></li>
                     </ul>
                 </div>
             </div>
@@ -30,26 +30,26 @@
                     <div class="col-xl-9 col-lg-8 wow fadeInUp" data-wow-duration="1s">
                         <div class="dashboard_content">
                             <div class="dashboard_body">
-                                <h3>Parsonal Information
+                                <h3>Thông tin cá nhân
                                     <a class="dash_add_new_address" href="{{ route('client.info.edit') }}">edit</a>
                                 </h3>
 
                                 <div class="dash_personal_info">
                                     <div class="personal_info_text">
-                                        <p><span>Name:</span>
+                                        <p><span>Tên:</span>
                                             {{ $get_user->ho_ten }}
                                         </p>
                                         <p><span>Email:</span>
                                             {{ $get_user->email }}
                                         </p>
-                                        <p><span>Phone:</span>
+                                        <p><span>Số điện thoại:</span>
                                             @if (isset($get_user->so_dien_thoai))
                                                 {{ $get_user->so_dien_thoai }}
                                             @else
                                                 Hãy cập nhật số điện thoại !
                                             @endif
                                         </p>
-                                        <p><span>Address:</span>
+                                        <p><span>Địa chỉ:</span>
                                             @if (isset($get_user->dia_chi))
                                                 {{ $get_user->dia_chi }}
                                             @else
