@@ -26,14 +26,14 @@
             <div class="row justify-content-center wow fadeInUp" data-wow-duration="1s">
                 <div class="col-xl-5 col-sm-10 col-md-8 col-lg-6">
                     <div class="login_area">
-                        <h2>Welcome back!</h2>
-                        <p>sign up to continue</p>
+                        <h2>Xin chào !</h2>
+                        <p>đăng ký để tiếp tục</p>
                         <form action="{{ route('client.register.store') }}" method="post" novalidate>
                             @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="login_imput">
-                                        <input type="text" placeholder="Name" name="user_name">
+                                        <input type="text" placeholder="Tên" name="user_name">
                                         @error('user_name')
                                             <span style="color: red">{{ $message }}</span>
                                         @enderror
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="login_imput">
-                                        <input type="password" placeholder="Password" name="user_pass">
+                                        <input type="password" placeholder="Mật khẩu" name="user_pass">
                                         @error('user_pass')
                                             <span style="color: red">{{ $message }}</span>
                                         @enderror
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="login_imput">
-                                        <input type="password" placeholder="Confirm Password" name="user_rpass">
+                                        <input type="password" placeholder="Xác nhận mật khẩu" name="user_rpass">
                                         @error('user_rpass')
                                             <span style="color: red">{{ $message }}</span>
                                         @enderror
@@ -65,19 +65,19 @@
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="login_imput">
-                                        <button type="submit" class="common_btn">Register</button>
+                                        <button type="submit" class="common_btn">Đăng ký</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <p class="or"><span>or</span></p>
+                        <p class="or"><span>hoặc</span></p>
                         <ul class="d-flex">
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
                         </ul>
-                        <p class="create_account">Dont’t have an aceount ? <a href="{{ route('client.login.add') }}">login</a></p>
+                        <p class="create_account">Đã có tài khoản ? <a href="{{ route('client.login.add') }}">đăng nhập</a></p>
                     </div>
                 </div>
             </div>

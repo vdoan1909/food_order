@@ -49,14 +49,6 @@ Route::prefix("admin")->middleware('admin')->group(function () {
     Route::put("dish/edit", [DishController::class, "edit"])->name("admin.dish.edit");
     Route::get("dish/delete/{id}", [DishController::class, "delete"])->name("admin.dish.delete");
 
-    // // side dish
-    // Route::get("side/dish", [SideDishController::class, "index"])->name("admin.sidedish");
-    // Route::get("side/dish/add", [SideDishController::class, "add"])->name("admin.sidedish.add");
-    // Route::post("side/dish/post", [SideDishController::class, "store"])->name("admin.sidedish.store");
-    // Route::get("side/dish/detail/{id}", [SideDishController::class, "detail"])->name("admin.sidedish.detail");
-    // Route::put("side/dish/edit", [SideDishController::class, "edit"])->name("admin.sidedish.edit");
-    // Route::get("side/dish/delete/{id}", [SideDishController::class, "delete"])->name("admin.sidedish.delete");
-
     // news
     Route::get("news", [NewsController::class, "index"])->name("admin.news");
     Route::get("news/add", [NewsController::class, "add"])->name("admin.news.add");

@@ -17,25 +17,31 @@
     <hr>
     <ul class="app-menu">
         <li>
-            <a class="app-menu__item " href="{{ route('admin.category') }}">
+            <a class="app-menu__item {{ Request::routeIs('admin.home') ? 'active' : '' }}" href="{{ route('admin.home') }}">
+                <i class='app-menu__icon bx bxs-dashboard'></i>
+                <span class="app-menu__label">Bảng điều khiển</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item {{ Request::routeIs('admin.category') ? 'active' : '' }}" href="{{ route('admin.category') }}">
                 <i class='app-menu__icon bx bx-id-card'></i>
                 <span class="app-menu__label">@lang('categoryManagement')</span>
             </a>
         </li>
         <li>
-            <a class="app-menu__item " href="{{ route('admin.newscategory') }}">
+            <a class="app-menu__item {{ Request::routeIs('admin.newscategory') ? 'active' : '' }}" href="{{ route('admin.newscategory') }}">
                 <i class='app-menu__icon bx bx-category'></i>
                 <span class="app-menu__label">@lang('newsCategory')</span>
             </a>
         </li>
         <li>
-            <a class="app-menu__item " href="{{ route('admin.dish') }}">
+            <a class="app-menu__item {{ Request::routeIs('admin.dish') ? 'active' : '' }}" href="{{ route('admin.dish') }}">
                 <i class='app-menu__icon bx bx-dish'></i>
                 <span class="app-menu__label">@lang('dishManagement')</span>
             </a>
         </li>
         <li>
-            <a class="app-menu__item " href="{{ route('admin.news') }}">
+            <a class="app-menu__item {{ Request::routeIs('admin.news') ? 'active' : '' }}" href="{{ route('admin.news') }}">
                 <i class='app-menu__icon bx bx-news'></i>
                 <span class="app-menu__label">@lang('newsManagement')</span>
             </a>

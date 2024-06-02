@@ -26,8 +26,8 @@
             <div class="row justify-content-center wow fadeInUp" data-wow-duration="1s">
                 <div class="col-xl-5 col-sm-10 col-md-8 col-lg-6">
                     <div class="login_area">
-                        <h2>Welcome back!</h2>
-                        <p>sign in to continue</p>
+                        <h2>Chào mừng!</h2>
+                        <p>đăng nhập để tiếp tục</p>
                         <form action="{{ route('client.login.store') }}" method="post" novalidate>
                             @csrf
                             <div class="row">
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="login_imput">
-                                        <input type="password" placeholder="Password" name="user_pass">
+                                        <input type="password" placeholder="Mật khẩu" name="user_pass">
                                         @error('user_pass')
                                             <span style="color: red">{{ $message }}</span>
                                         @enderror
@@ -49,25 +49,25 @@
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="login_imput login_check_area">
-                                        <a href="{{ route('client.forgot.add') }}">Forgot Password ?</a>
+                                        <a href="{{ route('client.forgot.add') }}">Quên mật khẩu ?</a>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="login_imput">
-                                        <button type="submit" class="common_btn">login</button>
+                                        <button type="submit" class="common_btn">đăng nhập</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <p class="or"><span>or</span></p>
+                        <p class="or"><span>hoặc</span></p>
                         <ul class="d-flex">
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
                         </ul>
-                        <p class="create_account">Dont’t have an aceount ? <a
-                                href="{{ route('client.register.add') }}">Create Account</a>
+                        <p class="create_account">Chưa có tài khoản ? <a
+                                href="{{ route('client.register.add') }}">Tạo tài khoản</a>
                         </p>
                     </div>
                 </div>
