@@ -2,7 +2,7 @@
     <p><b>Copyright
             <script type="text/javascript">
                 document.write(new Date().getFullYear());
-            </script> @lang("footerText")
+            </script> @lang('footerText')
         </b></p>
 </div>
 </main>
@@ -58,31 +58,29 @@
 </script>
 
 <script type="text/javascript">
+    var dataDoanhThu = @json($data_doanhthu);
+    var months = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9",
+        "Tháng 10", "Tháng 11", "Tháng 12"
+    ];
+    var doanhThu = Array(12).fill(0);
+
+    for (var i = 0; i < dataDoanhThu.length; i++) {
+        var monthIndex = dataDoanhThu[i].month - 1;
+        doanhThu[monthIndex] = dataDoanhThu[i].total;
+    }
+
     var data = {
-        labels: ["@lang('month') 1", "@lang('month') 2", "@lang('month') 3", "@lang('month') 4",
-            "@lang('month') 5", "@lang('month') 6"
-        ],
+        labels: months,
         datasets: [{
-                label: "Dữ liệu đầu tiên",
-                fillColor: "rgba(255, 213, 59, 0.767), 212, 59)",
-                strokeColor: "rgb(255, 212, 59)",
-                pointColor: "rgb(255, 212, 59)",
-                pointStrokeColor: "rgb(255, 212, 59)",
-                pointHighlightFill: "rgb(255, 212, 59)",
-                pointHighlightStroke: "rgb(255, 212, 59)",
-                data: [20, 59, 90, 51, 56, 100]
-            },
-            {
-                label: "Dữ liệu kế tiếp",
-                fillColor: "rgba(9, 109, 239, 0.651)  ",
-                pointColor: "rgb(9, 109, 239)",
-                strokeColor: "rgb(9, 109, 239)",
-                pointStrokeColor: "rgb(9, 109, 239)",
-                pointHighlightFill: "rgb(9, 109, 239)",
-                pointHighlightStroke: "rgb(9, 109, 239)",
-                data: [48, 48, 49, 39, 86, 10]
-            }
-        ]
+            label: "Dữ liệu đầu tiên",
+            fillColor: "rgba(255, 213, 59, 0.767), 212, 59)",
+            strokeColor: "rgb(255, 212, 59)",
+            pointColor: "rgb(255, 212, 59)",
+            pointStrokeColor: "rgb(255, 212, 59)",
+            pointHighlightFill: "rgb(255, 212, 59)",
+            pointHighlightStroke: "rgb(255, 212, 59)",
+            data: doanhThu
+        }]
     };
     var ctxl = $("#lineChartDemo").get(0).getContext("2d");
     var lineChart = new Chart(ctxl).Line(data);

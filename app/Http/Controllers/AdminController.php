@@ -9,6 +9,8 @@ use App\Models\BillDetail;
 use App\Models\Dish;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class AdminController extends Controller
 {
@@ -26,7 +28,13 @@ class AdminController extends Controller
             ->take(4)
             ->get();
 
-        $new_customer = Account::where('vai_tro', 0)->take(4)->get();
+        $new_customer = Account::where('vai_tro', 0)->orderByDesc('id')->take(4)->get();
+
+        $data_doanhthu = DB::table('hoadon_chitiet')
+            ->join('hoa_don', 'hoa_don.ma_don_hang', '=', 'hoadon_chitiet.ma_don_hang')
+            ->select(DB::raw('MONTH(hoa_don.ngay_mua) as month'), DB::raw('SUM(hoadon_chitiet.tong_tien) as total'))
+            ->groupBy('month')
+            ->get();
 
         return view('admin.home', [
             'count_account' => $count_account,
@@ -34,7 +42,8 @@ class AdminController extends Controller
             'count_order' => $count_order,
             'count_bill' => $count_bill,
             "bill_info" => $bill_info,
-            'new_customer' => $new_customer
+            'new_customer' => $new_customer,
+            'data_doanhthu' => $data_doanhthu
         ]);
     }
 }

@@ -46,5 +46,17 @@
                 <span class="app-menu__label">@lang('newsManagement')</span>
             </a>
         </li>
+        <li>
+            <a class="app-menu__item {{ Request::routeIs('admin.orders') ? 'active' : '' }}" href="{{ route('admin.orders') }}">
+                <i class='app-menu__icon bx bxs-pie-chart-alt-2'></i>
+                <span class="app-menu__label">@lang('orderManagement')</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item {{ Request::routeIs('admin.account') ? 'active' : '' }}" href="{{ route('admin.account') }}">
+                <i class='app-menu__icon bx bxs-pie-chart-alt-2'></i>
+                <span class="app-menu__label">@lang('accountManagement')</span>
+            </a>
+        </li>
     </ul>
 </aside>

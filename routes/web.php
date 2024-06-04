@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RatingController;
 // use App\Http\Controllers\SideDishController;
@@ -56,6 +57,11 @@ Route::prefix("admin")->middleware('admin')->group(function () {
     Route::get("news/detail/{id}", [NewsController::class, "detail"])->name("admin.news.detail");
     Route::put("news/edit", [NewsController::class, "edit"])->name("admin.news.edit");
     Route::get("news/delete/{id}", [NewsController::class, "delete"])->name("admin.news.delete");
+
+    // order
+    Route::get("orders", [OrderController::class, 'index'])->name("admin.orders");
+    Route::get("account", [AccountController::class, 'index'])->name("admin.account");
+    Route::get("account/delete/{id}", [AccountController::class, "delete"])->name("admin.account.delete");
 });
 
 Route::prefix("client")->group(function () {

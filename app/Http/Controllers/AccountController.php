@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Mail;
 
 class AccountController extends Controller
 {
+    public function index()
+    {
+        $accounts = Account::where('vai_tro', 0)->get();
+        return view("admin.account.list", compact("accounts"));
+    }
+
     public function add()
     {
         return view("client.account.register");
@@ -332,5 +338,18 @@ class AccountController extends Controller
         }
 
         return view("client.account.changepass", compact("get_user"));
+    }
+
+    public function delete(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $is_delete = Account::where("id", $id)->delete();
+
+            if ($is_delete) {
+                return response()->json(['success' => true]);
+            } else {
+                return response()->json(['success' => false]);
+            }
+        }
     }
 }
