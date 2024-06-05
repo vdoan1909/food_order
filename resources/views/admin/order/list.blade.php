@@ -27,6 +27,8 @@
                                 <th>Email nhận</th>
                                 <th>SĐT nhận</th>
                                 <th>Tên khách hàng</th>
+                                <th>Trạng thái đơn hàng</th>
+                                <th>Phương thức thanh toán</th>
                                 <th>Ghi chú</th>
                             </tr>
                         </thead>
@@ -39,6 +41,24 @@
                                     <td>{{ $order->email_nhan }}</td>
                                     <td>{{ $order->sdt_nguoi_nhan }}</td>
                                     <td>{{ $order->ten_khach_hang }}</td>
+                                    <td>
+                                        @if ($order->trang_thai_dh == 1)
+                                            <span class="badge bg-success">
+                                                @lang('accomplished')
+                                            </span>
+                                        @else
+                                            <span class="badge bg-warning">
+                                                @lang('beingTransported')
+                                            </span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($order->pttt == 1)
+                                            Thanh toán trực tiếp
+                                        @else
+                                            Thanh toán online
+                                        @endif
+                                    </td>
                                     <td>{{ $order->ghi_chu }}</td>
                                 </tr>
                             @endforeach

@@ -13,6 +13,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\SalesController;
 // use App\Http\Controllers\SideDishController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,7 @@ Route::prefix("admin")->middleware('admin')->group(function () {
     Route::get("orders", [OrderController::class, 'index'])->name("admin.orders");
     Route::get("account", [AccountController::class, 'index'])->name("admin.account");
     Route::get("account/delete/{id}", [AccountController::class, "delete"])->name("admin.account.delete");
+    Route::get("sales", [SalesController::class, 'index'])->name("admin.sales");
 });
 
 Route::prefix("client")->group(function () {
