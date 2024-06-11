@@ -193,37 +193,40 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="post_review">
-                                                <h4>viết 1 đánh giá</h4>
-                                                <form action="{{ route('comment') }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="id_mon_an"
-                                                        value="{{ $dish_detail->id }}">
-                                                    <p class="rating" id="rating">
-                                                        <span>đánh giá sao : </span>
-                                                        <i class="fas fa-star" data-rating="1"
-                                                            data-dish-id="{{ $dish_detail->id }}"></i>
-                                                        <i class="fas fa-star" data-rating="2"
-                                                            data-dish-id="{{ $dish_detail->id }}"></i>
-                                                        <i class="fas fa-star" data-rating="3"
-                                                            data-dish-id="{{ $dish_detail->id }}"></i>
-                                                        <i class="fas fa-star" data-rating="4"
-                                                            data-dish-id="{{ $dish_detail->id }}"></i>
-                                                        <i class="fas fa-star" data-rating="5"
-                                                            data-dish-id="{{ $dish_detail->id }}"></i>
-                                                    </p>
-                                                    <div class="row">
-                                                        <div class="col-xl-12">
-                                                            <textarea rows="3" placeholder="Viết đánh giá của bạn" name="comment"></textarea>
+                                        @if (isset(session('customer')->id))
+                                            <div class="col-lg-4">
+                                                <div class="post_review">
+                                                    <h4>viết 1 đánh giá</h4>
+                                                    <form action="{{ route('comment') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="id_mon_an"
+                                                            value="{{ $dish_detail->id }}">
+                                                        <p class="rating" id="rating">
+                                                            <span>đánh giá sao : </span>
+                                                            <i class="fas fa-star" data-rating="1"
+                                                                data-dish-id="{{ $dish_detail->id }}"></i>
+                                                            <i class="fas fa-star" data-rating="2"
+                                                                data-dish-id="{{ $dish_detail->id }}"></i>
+                                                            <i class="fas fa-star" data-rating="3"
+                                                                data-dish-id="{{ $dish_detail->id }}"></i>
+                                                            <i class="fas fa-star" data-rating="4"
+                                                                data-dish-id="{{ $dish_detail->id }}"></i>
+                                                            <i class="fas fa-star" data-rating="5"
+                                                                data-dish-id="{{ $dish_detail->id }}"></i>
+                                                        </p>
+                                                        <div class="row">
+                                                            <div class="col-xl-12">
+                                                                <textarea rows="3" placeholder="Viết đánh giá của bạn" name="comment"></textarea>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <button class="common_btn" type="submit">đánh
+                                                                    giá</button>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <button class="common_btn" type="submit">đánh giá</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                    </form>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
