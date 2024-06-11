@@ -1221,12 +1221,11 @@ END CONFIG STYLES
                                                                                 <tr>
                                                                                     <td align="center"
                                                                                         class="esd-block-text es-p35b">
-                                                                                        <p>Style Casual&nbsp;© 2021
-                                                                                            Style Casual, Inc. All
-                                                                                            Rights Reserved.</p>
-                                                                                        <p>4562 Hazy Panda Limits, Chair
-                                                                                            Crossing, Kentucky, US,
-                                                                                            607898</p>
+                                                                                        <p>Phong cách giản dị&nbsp;©
+                                                                                            2024
+                                                                                            Phong cách giản dị, Inc. Đã
+                                                                                            đăng ký Bản quyền.</p>
+                                                                                        <p>Cao Đẳng FPT Polytechnic</p>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -1245,8 +1244,9 @@ END CONFIG STYLES
                                                                                                         class="es-p10t es-p10b es-p5r es-p5l"
                                                                                                         style="padding-top: 5px; padding-bottom: 5px;">
                                                                                                         <a target="_blank"
-                                                                                                            href="https://">Visit
-                                                                                                            Us </a>
+                                                                                                            href="https://">Ghé
+                                                                                                            thăm chúng
+                                                                                                            tôi </a>
                                                                                                     </td>
                                                                                                     <td align="center"
                                                                                                         valign="top"
@@ -1254,8 +1254,9 @@ END CONFIG STYLES
                                                                                                         class="es-p10t es-p10b es-p5r es-p5l"
                                                                                                         style="padding-top: 5px; padding-bottom: 5px; border-left: 1px solid #cccccc;">
                                                                                                         <a target="_blank"
-                                                                                                            href="https://">Privacy
-                                                                                                            Policy</a>
+                                                                                                            href="https://">Chính
+                                                                                                            sách bảo
+                                                                                                            mật</a>
                                                                                                     </td>
                                                                                                     <td align="center"
                                                                                                         valign="top"
@@ -1306,10 +1307,11 @@ END CONFIG STYLES
                                                                                 <tr>
                                                                                     <td align="center"
                                                                                         class="esd-block-text es-infoblock">
-                                                                                        <p><a target="_blank"></a>No
-                                                                                            longer want to receive these
-                                                                                            emails?&nbsp;<a href
-                                                                                                target="_blank">Unsubscribe</a>.<a
+                                                                                        <p><a target="_blank"></a>Bạn
+                                                                                            không muốn nhận những thư
+                                                                                            này nữa??&nbsp;<a href
+                                                                                                target="_blank">Hủy
+                                                                                                đăng ký</a>.<a
                                                                                                 target="_blank"></a>
                                                                                         </p>
                                                                                     </td>

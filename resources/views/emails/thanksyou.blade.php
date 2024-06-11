@@ -115,11 +115,10 @@
             </div>
             <p>Nếu bạn có bất kỳ câu hỏi nào về đơn hàng, vui lòng liên hệ với đội ngũ hỗ trợ khách hàng của chúng tôi.
             </p>
-            {{-- <a href="[URL Website của Bạn]" class="btn">Truy cập Website của Chúng tôi</a> --}}
         </div>
         <div class="footer">
-            <p>&copy; 2024 Công ty của Bạn. Mọi quyền được bảo lưu.</p>
-            <p>Công ty của Bạn, 123 Đường của Bạn, Thành phố của Bạn, ST, 12345</p>
+            <p>&copy; 2024 RegFood. Mọi quyền được bảo lưu.</p>
+            <p>RegFood, Cao Đẳng FPT Polytechnic, Thành phố Hà Nội</p>
         </div>
     </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

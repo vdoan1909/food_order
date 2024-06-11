@@ -10,8 +10,11 @@
                         <a class="footer_logo" href="index.html">
                             <img src="{{ asset('images/footer_logo.png') }}" alt="RegFood" class="img-fluid w-100">
                         </a>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta facere delectus qui
-                            placeat inventore consectetur repellendus optio debitis.</span>
+                        <span>
+                            Chào mừng bạn đến với website đặt đồ ăn hàng đầu! Khám phá vô vàn món ăn ngon và
+                            thưởng thức cách ăn uống tuyệt vời ngay tại nhà. Đặt hàng dễ dàng, giao hàng
+                            nhanh chóng, và trải nghiệm dịch vụ đẳng cấp.
+                        </span>
                         <ul class="social_link d-flex flex-wrap">
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>

@@ -88,6 +88,7 @@ Route::prefix("client")->group(function () {
     Route::post("forgot/post", [AccountController::class, "forgotForm"])->name("client.forgot.store");
     Route::get("pass/change", [AccountController::class, "changePass"])->name("client.changepass.add");
     Route::post("pass/change/post", [AccountController::class, "changePassForm"])->name("client.changepass.store");
+    Route::get("order_user", [AccountController::class, "order_user"])->name("client.order_user");
     //cart
     Route::get("cart", [CartController::class, "index"])->name("client.cart");
     Route::post("cart/add", [CartController::class, "store"])->name("client.cart.add");
@@ -98,5 +99,7 @@ Route::prefix("client")->group(function () {
     //payment
     Route::match(['get', 'post'], "payment", [PaymentController::class, "vnpay_payment"])->name("client.payment");
     Route::match(['get', 'post'], "checkout", [PaymentController::class, "checkout"])->name("client.cart.checkout");
-    Route::post("checkout/confirm", [PaymentController::class, "checkout_confirm"])->name("client.checkout.confirm");
+    Route::post("checkout/confirm", [PaymentController::class, "checkout_confirm"])->name("client.checkout.confirm");   
+    //comment
+    Route::post('/comment', [HomeController::class,'comment'])->name('comment');
 });

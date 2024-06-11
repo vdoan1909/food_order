@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Dish;
 use App\Models\News;
 use App\Models\NewsCategory;
 use App\Models\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -36,6 +38,9 @@ class HomeController extends Controller
     {
         $categorys = Category::all();
         $dish_detail = Dish::find($id);
+        $list_comment = Comment::join('tai_khoan', 'tai_khoan.id', '=', 'binh_luan.id_khach_hang')
+            ->select('binh_luan.*', 'tai_khoan.ho_ten as ho_ten', 'tai_khoan.anh as anh')
+            ->latest('id')->where('id_mon_an', $id)->paginate(3);
         // $dish_detail->id_the_loai 
         $dish_related = Dish::where('id', '<>', $id)->where('id_the_loai', $dish_detail->id_the_loai)->get();
         foreach ($dish_related as $dish) {
@@ -49,7 +54,17 @@ class HomeController extends Controller
         if ($dish_detail) {
             $dish_detail->luot_xem += 1;
             $dish_detail->save();
-            return view("client.pages.detail", compact("dish_detail", "average_rating", "reviewers_count", "dish_related", "categorys"));
+            return view(
+                "client.pages.detail",
+                compact(
+                    "dish_detail",
+                    "average_rating",
+                    "reviewers_count",
+                    "dish_related",
+                    "categorys",
+                    "list_comment"
+                )
+            );
         } else {
             return view("404");
         }
@@ -102,5 +117,20 @@ class HomeController extends Controller
         $news_detail->ngay_dang = Carbon::parse($news_detail->ngay_dang)->format('d/m/Y');
 
         return view("client.pages.news", compact("news_detail", "list_news_ctg"));
+    }
+
+    public function comment(Request $request)
+    {
+        $data = $request->all();
+
+        Comment::create(
+            [
+                'id_khach_hang' => session('customer')->id,
+                'id_mon_an' => $data["id_mon_an"],
+                'noi_dung' => $data["comment"]
+            ]
+        );
+
+        return back();
     }
 }

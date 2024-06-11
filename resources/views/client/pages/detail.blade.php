@@ -131,49 +131,59 @@
                                     aria-controls="pills-contact" aria-selected="false">Đánh giá</button>
                             </li>
                         </ul>
-                        {{-- <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                 aria-labelledby="pills-contact-tab" tabindex="0">
                                 <div class="review_area">
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <h4>04 đánh giá</h4>
                                             <div class="comment pt-0 mt_20">
-                                                <div class="single_comment m-0 border-0">
-                                                    <img src="images/client_1.png" alt="review" class="img-fluid">
-                                                    <div class="single_comm_text">
-                                                        <h3>Michel Holder <span>29 oct 2022 </span></h3>
-                                                        <span class="rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fad fa-star-half-alt"></i>
-                                                            <i class="fal fa-star"></i>
-                                                            <b>(120)</b>
-                                                        </span>
-                                                        <p>Sure there isn't anything embarrassing hiidden in the
-                                                            middles of text. All erators on the Internet
-                                                            tend to repeat predefined chunks</p>
+                                                @foreach ($list_comment as $comment)
+                                                    <div class="single_comment m-0 border-0">
+                                                        @if ($comment->anh)
+                                                            <img src="{{ asset('storage/' . $comment->anh) }}"
+                                                                alt="review" class="img-fluid">
+                                                        @else
+                                                            <img src="https://static.vecteezy.com/system/resources/previews/024/983/914/original/simple-user-default-icon-free-png.png"
+                                                                alt="review" class="img-fluid">
+                                                        @endif
+                                                        <div class="single_comm_text">
+                                                            <h3>{{ $comment->ho_ten }} <span>
+                                                                    {{ $comment->ngay_binh_luan }} </span></h3>
+                                                            <p>
+                                                                {{ $comment->noi_dung }}
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endforeach
 
                                                 <div class="pagination mt_30">
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <nav aria-label="...">
                                                                 <ul class="pagination">
-                                                                    <li class="page-item">
-                                                                        <a class="page-link" href="#"><i
+                                                                    <!-- Previous Page -->
+                                                                    <li
+                                                                        class="page-item {{ $list_comment->currentPage() == 1 ? 'disabled' : '' }}">
+                                                                        <a class="page-link"
+                                                                            href="{{ $list_comment->previousPageUrl() }}"><i
                                                                                 class="fas fa-long-arrow-alt-left"></i></a>
                                                                     </li>
-                                                                    <li class="page-item"><a class="page-link"
-                                                                            href="#">1</a></li>
-                                                                    <li class="page-item active"><a class="page-link"
-                                                                            href="#">2</a></li>
-                                                                    <li class="page-item"><a class="page-link"
-                                                                            href="#">3</a></li>
-                                                                    <li class="page-item">
-                                                                        <a class="page-link" href="#"><i
+
+                                                                    <!-- Page Numbers -->
+                                                                    @for ($i = 1; $i <= $list_comment->lastPage(); $i++)
+                                                                        <li
+                                                                            class="page-item {{ $list_comment->currentPage() == $i ? 'active' : '' }}">
+                                                                            <a class="page-link"
+                                                                                href="{{ $list_comment->url($i) }}">{{ $i }}</a>
+                                                                        </li>
+                                                                    @endfor
+
+                                                                    <!-- Next Page -->
+                                                                    <li
+                                                                        class="page-item {{ $list_comment->currentPage() == $list_comment->lastPage() ? 'disabled' : '' }}">
+                                                                        <a class="page-link"
+                                                                            href="{{ $list_comment->nextPageUrl() }}"><i
                                                                                 class="fas fa-long-arrow-alt-right"></i></a>
                                                                     </li>
                                                                 </ul>
@@ -186,7 +196,10 @@
                                         <div class="col-lg-4">
                                             <div class="post_review">
                                                 <h4>viết 1 đánh giá</h4>
-                                                <form>
+                                                <form action="{{ route('comment') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id_mon_an"
+                                                        value="{{ $dish_detail->id }}">
                                                     <p class="rating" id="rating">
                                                         <span>đánh giá sao : </span>
                                                         <i class="fas fa-star" data-rating="1"
@@ -202,7 +215,7 @@
                                                     </p>
                                                     <div class="row">
                                                         <div class="col-xl-12">
-                                                            <textarea rows="3" placeholder="Viết đánh giá của bạn"></textarea>
+                                                            <textarea rows="3" placeholder="Viết đánh giá của bạn" name="comment"></textarea>
                                                         </div>
                                                         <div class="col-12">
                                                             <button class="common_btn" type="submit">đánh giá</button>
@@ -214,7 +227,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -246,7 +259,7 @@
                                             @php
                                                 $rounded_rating = round($related->average_rating * 2) / 2;
                                             @endphp
-    
+
                                             @for ($i = 0; $i < 5; $i++)
                                                 @if ($i < floor($rounded_rating))
                                                     <!-- Full star -->

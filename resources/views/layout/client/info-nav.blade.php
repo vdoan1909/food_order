@@ -28,25 +28,22 @@
             @endif
 
             <li>
-                <a href="#">
+                <a class="{{ Request::routeIs('client.order_user') ? 'active' : '' }}"
+                    href="{{ route('client.order_user') }}">
                     <span><i class="fas fa-bags-shopping"></i></span>
                     Đơn hàng
                 </a>
             </li>
             <li>
-                <a class="{{ Request::routeIs('client.favorite') ? 'active' : '' }}" href="{{ route('client.favorite') }}">
+                <a class="{{ Request::routeIs('client.favorite') ? 'active' : '' }}"
+                    href="{{ route('client.favorite') }}">
                     <span><i class="far fa-heart"></i></span>
                     Yêu thích
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <span><i class="fas fa-star"></i></span>
-                    Đánh giá
-                </a>
-            </li>
-            <li>
-                <a class="{{ Request::routeIs('client.changepass.add') ? 'active' : '' }}" href="{{ route('client.changepass.add') }}">
+                <a class="{{ Request::routeIs('client.changepass.add') ? 'active' : '' }}"
+                    href="{{ route('client.changepass.add') }}">
                     <span><i class="fas fa-user-lock"></i></span>
                     Đổi mật khẩu
                 </a>

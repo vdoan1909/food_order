@@ -56,7 +56,7 @@
     <div class="container">
         <h1>Thông báo cập nhật thông tin tài khoản</h1>
         <p>Chào <b>{{ $user_name }}</b>,</p>
-        <p>Chúng tôi muốn thông báo rằng thông tin tài khoản của bạn trên [Tên Công Ty hoặc Dịch vụ] đã được cập nhật
+        <p>Chúng tôi muốn thông báo rằng thông tin tài khoản của bạn trên RegFood đã được cập nhật
             thành công. Dưới đây là thông tin mới của bạn:</p>
         <table>
             <tr>

@@ -198,28 +198,7 @@
                 <div class="download_text_bg" style="background: url('{{ asset('images/download_img.png') }}')">
                     <div class="download_text_overlay">
                         <div class="download_text wow fadeInUp" data-wow-duration="1s">
-                            <h5>$5.00 Cashback</h5>
-                            <h2>Easy To Order Our All Food</h2>
-                            <ul class="d-flex flex-wrap">
-                                <li>
-                                    <a href="#">
-                                        <span class="icon"><i class="fab fa-google-play"></i></span>
-                                        <p>
-                                            <span>Available on the</span>
-                                            Google Play
-                                        </p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="icon"><i class="fab fa-apple"></i></span>
-                                        <p>
-                                            <span>Download on the</span>
-                                            App Store
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
+                            <h2>Dễ dàng đặt hàng tất cả thực phẩm của chúng tôi</h2>
                         </div>
                     </div>
                 </div>

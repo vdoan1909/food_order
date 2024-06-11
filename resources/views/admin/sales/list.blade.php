@@ -56,10 +56,8 @@
                                 <th>@lang('dishName')</th>
                                 <th>@lang('dishPrice')</th>
                                 <th>@lang('dishImg')</th>
-                                <th>@lang('dishDes')</th>
                                 <th width="20">@lang('dishView')</th>
                                 <th>@lang('category')</th>
-                                <th>@lang('dishCreate')</th>
                             </tr>
                             </tr>
                         </thead>
@@ -77,18 +75,12 @@
                                         <img style="width: 200px;height: 200px;object-fit: cover"
                                             src="{{ asset('storage/' . $dish->anh_mon_an) }}" alt="">
                                     </td>
-                                    <td>{{ $dish->mo_ta }}</td>
                                     <td>{{ $dish->luot_xem }}</td>
                                     @foreach ($list_ctg as $ctg)
                                         @if ($ctg->id === $dish->id_the_loai)
                                             <td>{{ $ctg->ten_danh_muc }}</td>
                                         @endif
                                     @endforeach
-                                    <td>
-                                        {{ \Carbon\Carbon::parse($dish->ngay_them)->format('d/m/Y') }}
-                                        <br>
-                                        {{ \Carbon\Carbon::parse($dish->ngay_them)->diffForHumans() }}
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

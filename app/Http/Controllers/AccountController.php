@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Models\Bill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -351,5 +352,22 @@ class AccountController extends Controller
                 return response()->json(['success' => false]);
             }
         }
+    }
+
+    public function order_user(Request $request)
+    {
+        $id = null;
+
+        if ($request->session()->has('customer')) {
+            $id = session()->get('customer')->id;
+        } elseif ($request->session()->has('admin')) {
+            $id = session()->get('admin')->id;
+        }
+
+        $get_user = Account::find($id);
+        $orders = Bill::join('hoadon_chitiet', 'hoadon_chitiet.ma_don_hang', '=', 'hoa_don.ma_don_hang')
+            ->select('hoa_don.*', 'hoadon_chitiet.*')
+            ->where('hoa_don.id_khach_hang', $id)->get();
+        return view('client.pages.order', compact('orders', 'get_user'));
     }
 }
