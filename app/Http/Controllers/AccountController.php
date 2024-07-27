@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Laravel\Socialite\Facades\Socialite;
 
 class AccountController extends Controller
 {
@@ -16,6 +17,46 @@ class AccountController extends Controller
     {
         $accounts = Account::where('vai_tro', 0)->get();
         return view("admin.account.list", compact("accounts"));
+    }
+
+    public function redirect()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function callBackGoogle()
+    {
+        try {
+            $google_user = Socialite::driver('google')->user();
+
+            $user = Account::where('google_id', $google_user->getId())
+                ->orWhere('email', $google_user->getEmail())
+                ->first();
+
+            if ($user) {
+                $user->update([
+                    'ho_ten' => $google_user->getName(),
+                    'google_token' => $google_user->token,
+                    'google_refresh_token' => $google_user->refreshToken,
+                ]);
+            } else {
+                $user = Account::create([
+                    'ho_ten' => $google_user->getName(),
+                    'email' => $google_user->getEmail(),
+                    'mat_khau' => bcrypt('password'),
+                    'google_id' => $google_user->getId(),
+                    'google_token' => $google_user->token,
+                    'google_refresh_token' => $google_user->refreshToken,
+                ]);
+            }
+
+            Auth::login($user);
+
+            return redirect()->route('client.home');
+        } catch (\Exception $e) {
+            dd($e);
+            // return redirect()->route('client.login.add')->withErrors('Something went wrong.');
+        }
     }
 
     public function add()

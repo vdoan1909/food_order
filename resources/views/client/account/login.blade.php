@@ -64,10 +64,10 @@
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="{{ route('google-auth') }}"><i class="fab fa-google-plus-g"></i></a></li>
                         </ul>
-                        <p class="create_account">Chưa có tài khoản ? <a
-                                href="{{ route('client.register.add') }}">Tạo tài khoản</a>
+                        <p class="create_account">Chưa có tài khoản ? <a href="{{ route('client.register.add') }}">Tạo tài
+                                khoản</a>
                         </p>
                     </div>
                 </div>

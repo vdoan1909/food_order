@@ -88,7 +88,8 @@ img {
 }
 
 input,
-textarea, select {
+textarea,
+select {
     width: 100%;
     padding: 12px 20px;
     outline: none;
@@ -126,17 +127,22 @@ button {
 }
 
 .menu_icon li ul {
-    display: none; /* Ẩn ul con mặc định */
+    display: none;
+    /* Ẩn ul con mặc định */
     position: absolute;
     top: 100%;
-    background-color: #fff; /* Màu nền của ul con */
-    padding: 10px; /* Khoảng cách nội dung với khung viền */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng cho ul con */
+    background-color: #fff;
+    /* Màu nền của ul con */
+    padding: 10px;
+    /* Khoảng cách nội dung với khung viền */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Đổ bóng cho ul con */
 }
 
 .menu_icon li:hover ul {
     width: 200px;
-    display: block; /* Hiển thị ul con khi hover vào li cha */
+    display: block;
+    /* Hiển thị ul con khi hover vào li cha */
 }
 
 .menu_icon li ul li {
@@ -145,13 +151,15 @@ button {
 
 .menu_icon li ul li a {
     display: block;
-    color: #000; /* Màu chữ của các phần tử trong ul con */
+    color: #000;
+    /* Màu chữ của các phần tử trong ul con */
     text-decoration: none;
-    padding: 5px 0; /* Khoảng cách giữa các phần tử */
+    padding: 5px 0;
+    /* Khoảng cách giữa các phần tử */
     transition: 0.3s;
 }
 
-.menu_icon li ul li a:hover{
+.menu_icon li ul li a:hover {
     color: var(--colorPrimary);
 }
 
@@ -1274,6 +1282,7 @@ button {
 
 .blog::after,
 .menu::after {
+    display: none;
     top: auto;
     left: auto;
     right: -350px;

@@ -76,6 +76,8 @@ Route::prefix("client")->group(function () {
     Route::get("news/detail/{id}", [HomeController::class, "newsdetail"])->name("client.news.detail");
     Route::get("detail/{id}", [HomeController::class, "detail"])->name("client.detail");
     // account
+    Route::get('auth/google', [AccountController::class, 'redirect'])->name('google-auth');
+    Route::get('auth/google/call-back', [AccountController::class, 'callBackGoogle']);
     Route::get("register", [AccountController::class, "add"])->name("client.register.add");
     Route::post("register/post", [AccountController::class, "store"])->name("client.register.store");
     Route::get("login", [AccountController::class, "loginForm"])->name("client.login.add");
@@ -99,7 +101,7 @@ Route::prefix("client")->group(function () {
     //payment
     Route::match(['get', 'post'], "payment", [PaymentController::class, "vnpay_payment"])->name("client.payment");
     Route::match(['get', 'post'], "checkout", [PaymentController::class, "checkout"])->name("client.cart.checkout");
-    Route::post("checkout/confirm", [PaymentController::class, "checkout_confirm"])->name("client.checkout.confirm");   
+    Route::post("checkout/confirm", [PaymentController::class, "checkout_confirm"])->name("client.checkout.confirm");
     //comment
-    Route::post('/comment', [HomeController::class,'comment'])->name('comment');
+    Route::post('/comment', [HomeController::class, 'comment'])->name('comment');
 });
